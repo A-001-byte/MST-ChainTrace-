@@ -1,4 +1,14 @@
 {
+  "previous": [
+    {
+      "deployedAt": "2026-09-29T07:12:49.879Z",
+      "addresses": {
+        "VerdictOracle": "0x98Fc51a9B8b9d24DB6514F823Fcb7fF443B7B4c8",
+        "GuardedGateway": "0xCdBb411C6EA9401945235926331f4BEb63A8f3F8",
+        "ClearanceSBT": "0xB5f65176B6F9c895691615DF72FC51C1686754ce"
+      }
+    }
+  ],
   "network": "mst-testnet",
   "chainId": "91562037",
   "deployer": "0x37eDb37EfA01352e0AC32aB8d9c2160faA4BAFf7",
@@ -17,10 +27,10 @@
       "custodyHold": 5000
     }
   },
-  "deployedAt": "2026-09-29T07:12:49.879Z",
+  "deployedAt": "2026-09-29T09:25:04.588Z",
   "contracts": {
     "VerdictOracle": {
-      "address": "0x98Fc51a9B8b9d24DB6514F823Fcb7fF443B7B4c8",
+      "address": "0x6068720CD6217161e43f437132B826b1E50894Bf",
       "abi": [
         {
           "inputs": [
@@ -1237,10 +1247,10 @@
           "type": "function"
         }
       ],
-      "txHash": "0xaa11943b2d0a69e7394dcaeb745a1823a0750a98c4be6d919a83eda05bcb66e7"
+      "txHash": "0x122c1ce8794e017c13703bb212600f84985956e61d81de1c662bc756a7a34a7e"
     },
     "GuardedGateway": {
-      "address": "0xCdBb411C6EA9401945235926331f4BEb63A8f3F8",
+      "address": "0x512f6C80C7C911d12fDFeE2E089fAe41491ce5AC",
       "abi": [
         {
           "inputs": [
@@ -1887,10 +1897,10 @@
           "type": "function"
         }
       ],
-      "txHash": "0xeceddff10f348f6776b7a3727692509097091237cf4c93910967ef50e3c4c7b7"
+      "txHash": "0xfaf9a9a217350267da12cb8e01351aecda4d7b8774f056baed55a85bfe773e9b"
     },
     "ClearanceSBT": {
-      "address": "0xB5f65176B6F9c895691615DF72FC51C1686754ce",
+      "address": "0x42369868b9dE88B608Bd0C33E025a70020cF6331",
       "abi": [
         {
           "inputs": [
@@ -2720,7 +2730,15 @@
           "type": "function"
         }
       ],
-      "txHash": "0xd1234fa15593c5c58cb5174bc000e1812e5be348c4334d155fe89dda66d8ea00"
+      "txHash": "0xa839fe5e4f7f8f5e160720ea9c61a686216b131917d0d421e2d51c7539e2c456"
     }
+  },
+  "realEpoch": {
+    "epoch": 1,
+    "root": "0x54626f817a68f332d8dd25a8165361c9b62eef56bbd89b38fa4cbb57ad5fd685",
+    "leafCount": 33,
+    "manifestHash": "0x60fbe249c257807505330928aa2c967b071ca90a6bdef5c7a06c88b1be216250",
+    "txHash": "0x90b160e11d01f4e9c1dd4fc089e832739df974d67e4a4ded50c1ea3030fda4ea",
+    "blockNumber": 5806221
   }
 }

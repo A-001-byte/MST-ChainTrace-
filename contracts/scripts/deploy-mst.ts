@@ -65,7 +65,16 @@ async function main() {
   );
   await record("ClearanceSBT", await (await ethers.getContractFactory("ClearanceSBT")).deploy(oracleAddr));
 
+  // keep the previous deployment (if any) on record so nothing is silently lost
+  const file0 = path.join(__dirname, "..", "deployments", "mst-testnet.json");
+  let previous: unknown[] = [];
+  if (fs.existsSync(file0)) {
+    const old = JSON.parse(fs.readFileSync(file0, "utf8"));
+    previous = [...(old.previous ?? []), { deployedAt: old.deployedAt, addresses: Object.fromEntries(Object.entries<any>(old.contracts).map(([k, v]) => [k, v.address])) }];
+  }
+
   const out = {
+    previous,
     network: "mst-testnet",
     chainId: live.toString(),
     deployer: deployer.address,
