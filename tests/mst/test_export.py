@@ -97,3 +97,15 @@ def test_cli_writes_files(tmp_path):
     data = json.loads((tmp_path / "out" / "epoch_7.json").read_text(encoding="utf-8"))
     assert data["manifest"]["epoch"] == 7 and len(data["entries"]) == 3
     assert json.loads((tmp_path / "out" / "latest_root.json").read_text(encoding="utf-8"))["root"] == data["root"]
+
+
+def test_wallet_prefix_is_stripped_from_node_id():
+    from src.mst.export import wallet_address
+    from src.mst.leaf import address_key
+
+    assert wallet_address("wallet_1ABC") == "1ABC"
+    assert wallet_address("1ABC") == "1ABC"
+    alerts = pd.DataFrame([{"node_id": "wallet_1ABC", "node_type": "wallet", "risk_score": 0.9}])
+    out = export.build_export(alerts, None, None, 1)
+    assert out["entries"][0]["address"] == "1ABC"
+    assert out["entries"][0]["key"] == "0x" + address_key("1ABC").hex()

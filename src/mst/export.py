@@ -48,6 +48,12 @@ INTENT_BY_LABEL = {
 }
 
 
+def wallet_address(node_id) -> str:
+    """graph_ml names wallet nodes 'wallet_<btc address>'; the SMT key is the bare address."""
+    node_id = str(node_id)
+    return node_id[len("wallet_"):] if node_id.startswith("wallet_") else node_id
+
+
 def _missing(v) -> bool:
     return v is None or (isinstance(v, float) and math.isnan(v)) or v is pd.NA or v is pd.NaT
 
@@ -83,7 +89,7 @@ def build_fields(row: dict, taint: dict | None, agency: dict | None, epoch: int)
     if _truthy(row.get("is_known_label")):
         flags |= Flag.KNOWN_LABEL
 
-    address = str(row["node_id"])
+    address = wallet_address(row["node_id"])
     return LeafFields(
         key=address_key(address), epoch=epoch, band=int(band_for_score(risk)),
         risk_bps=0 if risk is None else bps(float(risk)),
@@ -110,7 +116,7 @@ def build_export(alerts: pd.DataFrame, taint: pd.DataFrame | None, agency: pd.Da
     tree = SparseMerkleTree()
     rows, fields_by_addr, missing_counts = [], {}, {}
     for row in alerts.to_dict(orient="records"):
-        addr = str(row["node_id"])
+        addr = wallet_address(row["node_id"])
         fields, missing = build_fields(row, taint_by_addr.get(addr), agency_by_addr.get(addr), epoch)
         for col in missing:
             missing_counts[col] = missing_counts.get(col, 0) + 1
