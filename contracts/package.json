@@ -1,0 +1,23 @@
+{
+  "name": "mst-verdict-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MST blockchain verdict layer: SMTVerifier, VerdictOracle, GuardedGateway, ClearanceSBT",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:gas": "REPORT_GAS=true hardhat test",
+    "deploy:mst": "hardhat run scripts/deploy-mst.ts --network mst"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.2",
+    "@types/node": "^26.6.3",
+    "dotenv": "^18.0.4",
+    "hardhat": "^2.29.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.8"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.6.1"
+  }
+}

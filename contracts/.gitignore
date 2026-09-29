@@ -1,0 +1,12 @@
+node_modules/
+cache/
+artifacts/
+typechain-types/
+coverage/
+coverage.json
+dist/
+
+# Secrets — the deployer key lives here and must never be committed
+.env
+.env.*
+!.env.example
