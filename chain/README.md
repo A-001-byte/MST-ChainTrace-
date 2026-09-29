@@ -17,3 +17,6 @@ Deploy (needs a funded MST testnet key in `MST_PRIVATE_KEY`; the script reads `e
 npx hardhat run scripts/deploy.js --network mst
 EPOCH=1 ROOT=0x<root from outputs/mst/latest_root.json> npx hardhat run scripts/deploy.js --network mst
 ```
+
+Deployer wallet (MST testnet, funded with 10 MST, no transactions yet): `0x376299fD751DF962354bc1F0a235e85615F5eED3`.
+Only the address is recorded here; the private key stays in your shell as `MST_PRIVATE_KEY`.
