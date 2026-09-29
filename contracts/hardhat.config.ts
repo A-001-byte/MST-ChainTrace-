@@ -12,7 +12,7 @@ const config: HardhatUserConfig = {
   solidity: {
     version: "0.8.24",
     settings: {
-      optimizer: { enabled: true, runs: 200 },
+      optimizer: { enabled: true, runs: 1 },
       // verifyVerdict/deposit take 11 flat params per the spec; viaIR avoids stack-too-deep
       viaIR: true,
       evmVersion: "cancun",
