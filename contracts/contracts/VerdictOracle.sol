@@ -209,7 +209,7 @@ contract VerdictOracle is Ownable {
         uint16 cwtBps,
         uint16 lowerBps,
         uint8 intent,
-        uint16 flags,
+        uint8 flags,
         uint256 bitmap,
         bytes32[] calldata siblings
     ) public view returns (bool) {
@@ -242,10 +242,10 @@ contract VerdictOracle is Ownable {
         uint16 cwtBps,
         uint16 lowerBps,
         uint8 intent,
-        uint16 flags,
+        uint8 flags,
         uint256 bitmap,
         bytes32[] calldata siblings
-    ) external view returns (uint8, uint16, bool wasOverturned) {
+    ) external view returns (uint8, uint8, bool wasOverturned) {
         if (!verifyVerdict(key, epoch, band, riskBps, haircutBps, cwtBps, lowerBps, intent, flags, bitmap, siblings)) {
             revert InvalidProof();
         }

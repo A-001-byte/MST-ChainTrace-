@@ -53,7 +53,7 @@ contract SMTVerifierHarness {
         uint16 cwtBps,
         uint16 lowerBps,
         uint8 intent,
-        uint16 flags
+        uint8 flags
     ) external pure returns (bytes32) {
         return VerdictLeaf.hash(key, epoch, band, riskBps, haircutBps, cwtBps, lowerBps, intent, flags);
     }

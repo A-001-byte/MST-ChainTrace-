@@ -3,47 +3,96 @@ import { ethers } from "hardhat";
 import * as fs from "fs";
 import * as path from "path";
 import { DEFAULTS, EMPTY_ROOT, SparseMerkleTree, keyFrom } from "./helpers/smt";
-import { verdictLeaf } from "./helpers/verdict";
+import { verdictArgs } from "./helpers/verdict";
 
-const VECTORS_PATH = path.join(__dirname, "vectors", "smt_vectors.json");
+// Member 1's golden vectors (docs/SHARED_SPEC_v1.md). Looked up in contracts/tests/vectors/ first, then at the repo
+// root tests/vectors/ where Member 1 publishes it. Nothing is copied, so it can never go stale.
+const CANDIDATES = [
+  path.join(__dirname, "vectors", "smt_vectors.json"),
+  path.join(__dirname, "..", "..", "tests", "vectors", "smt_vectors.json"),
+];
+const VECTORS_PATH = CANDIDATES.find((p) => fs.existsSync(p));
 
 async function deploy() {
   return (await ethers.getContractFactory("SMTVerifierHarness")).deploy();
 }
 
 /**
- * GOLDEN VECTORS (Member 1's tests/vectors/smt_vectors.json). Schema is documented in contracts/SPEC.md.
- * If the file is absent this suite FAILS with an explicit message - it is not skipped or mocked.
+ * GOLDEN VECTORS. If the file is absent this suite FAILS with an explicit message - it is not skipped or mocked.
  */
 describe("SMTVerifier - golden vectors (smt_vectors.json)", () => {
   it("vectors file exists", () => {
-    if (!fs.existsSync(VECTORS_PATH)) {
-      throw new Error(
-        `NOT RUNNABLE: ${VECTORS_PATH} does not exist yet (Member 1 has not delivered it). ` +
-          `No golden vector has been verified.`
-      );
+    if (!VECTORS_PATH) {
+      throw new Error(`NOT RUNNABLE: smt_vectors.json not found in ${CANDIDATES.join(" or ")}. No golden vector verified.`);
+    }
+  });
+  if (!VECTORS_PATH) return;
+
+  const V = JSON.parse(fs.readFileSync(VECTORS_PATH, "utf8"));
+  const gas: { member: number[]; non_member: number[] } = { member: [], non_member: [] };
+
+  it("spec header: keccak256, depth 256", () => {
+    expect(V.hash).to.equal("keccak256");
+    expect(V.depth).to.equal(256);
+    expect(V.cases.length).to.be.greaterThanOrEqual(20);
+  });
+
+  it("keccak KATs and key derivation (key = keccak256(utf8 address)) match", () => {
+    for (const k of V.keccak_kats) expect(ethers.keccak256(k.inputHex)).to.equal(k.keccak256);
+    for (const k of V.keyVectors) expect(ethers.keccak256(ethers.toUtf8Bytes(k.address))).to.equal(k.key);
+  });
+
+  it("all 257 default hashes equal the constants compiled into SMTDefaults.sol", () => {
+    expect(V.defaults.length).to.equal(257);
+    const src = fs.readFileSync(path.join(__dirname, "..", "contracts", "libraries", "SMTDefaults.sol"), "utf8");
+    const hex = src.match(/hex"([0-9a-f]+)"/)![1];
+    expect("0x" + hex).to.equal("0x" + V.defaults.map((d: string) => d.slice(2)).join(""));
+    expect(V.trees.empty.root).to.equal(EMPTY_ROOT);
+  });
+
+  it("every leafVector: on-chain VerdictLeaf.hash equals the golden leaf (abi.encode layout)", async () => {
+    const h = await deploy();
+    expect(V.leafVectors.length).to.be.greaterThan(0);
+    for (const lv of V.leafVectors) {
+      const onchain = await h.verdictLeaf(lv.key, lv.epoch, ...verdictArgs(lv));
+      expect(onchain, `leaf for ${lv.address}`).to.equal(lv.leaf);
     }
   });
 
-  if (fs.existsSync(VECTORS_PATH)) {
-    const raw = JSON.parse(fs.readFileSync(VECTORS_PATH, "utf8"));
-    const vectors: any[] = Array.isArray(raw) ? raw : raw.vectors;
-    it("contains at least one vector", () => expect(vectors.length).to.be.greaterThan(0));
-    vectors.forEach((v, i) => {
-      it(`vector ${i} ${v.name ?? ""} (${v.type ?? "?"})`, async () => {
-        const h = await deploy();
-        const expected = v.expected === undefined ? true : Boolean(v.expected);
-        const bitmap = BigInt(v.bitmap);
-        expect(await h.verify(v.root, v.key, v.leafHash, bitmap, v.siblings)).to.equal(expected);
-        if (expected) expect(await h.computeRoot(v.key, v.leafHash, bitmap, v.siblings)).to.equal(v.root);
-        if (v.type === "exclusion") expect(v.leafHash).to.equal(ethers.ZeroHash);
-        if (v.verdict) {
-          // cross-team check: the leaf preimage encoding must match Member 1's
-          expect(verdictLeaf(v.key, v.epoch, v.verdict)).to.equal(v.leafHash);
-        }
-      });
+  V.cases.forEach((c: any, i: number) => {
+    it(`case ${i}: ${c.name} [${c.kind}] valid=${c.valid}`, async () => {
+      const h = await deploy();
+      const root = V.trees[c.tree].root;
+      const bitmap = BigInt(c.proof.bitmap);
+      expect(await h.verify(root, c.key, c.leaf, bitmap, c.proof.siblings)).to.equal(c.valid);
+      if (c.valid) {
+        expect(await h.computeRoot(c.key, c.leaf, bitmap, c.proof.siblings)).to.equal(root);
+        const [ok, g] = await h.verifyGas(root, c.key, c.leaf, bitmap, c.proof.siblings);
+        expect(ok).to.equal(true);
+        gas[c.kind as "member" | "non_member"].push(Number(g));
+      }
+      if (c.kind === "non_member" && c.valid) expect(c.leaf).to.equal(ethers.ZeroHash);
     });
-  }
+  });
+
+  it("mutation vectors replay on the reference tree (set / delete) with the golden roots", () => {
+    const m = V.mutation;
+    for (const [name, mm] of Object.entries<any>(m).filter(([, x]) => x && x.steps)) {
+      const t = new SparseMerkleTree();
+      for (const l of V.trees[mm.tree].leaves) t.set(l.key, l.leaf);
+      for (const st of mm.steps) {
+        t.set(st.key, st.op === "delete" ? ethers.ZeroHash : st.leaf);
+        expect(t.root, `${name} step`).to.equal(st.rootAfter);
+      }
+    }
+  });
+
+  after(() => {
+    const stat = (a: number[]) => (a.length ? `n=${a.length} min=${Math.min(...a)} max=${Math.max(...a)} avg=${Math.round(a.reduce((x, y) => x + y, 0) / a.length)}` : "n=0");
+    console.log(`\n      [GOLDEN-VECTOR gas, verification only (gasleft delta), source ${VECTORS_PATH}]`);
+    console.log(`      member inclusion : ${stat(gas.member)}`);
+    console.log(`      non-member (excl): ${stat(gas.non_member)}`);
+  });
 });
 
 /**
@@ -107,7 +156,6 @@ describe("SMTVerifier - local reference tree", () => {
         expect(await h.verify(tree.root, key, leaf, p.bitmap, s), `sibling ${i} byte ${byte}`).to.equal(false);
       }
     }
-    // flipping a bitmap bit either mis-sizes the proof or changes a sibling: false either way
     for (const bit of [0n, 7n, 200n, 255n]) {
       expect(await h.verify(tree.root, key, leaf, p.bitmap ^ (1n << bit), p.siblings), `bitmap bit ${bit}`).to.equal(false);
     }
@@ -127,20 +175,5 @@ describe("SMTVerifier - local reference tree", () => {
     expect(await h.verify(tree.root, key, ethers.ZeroHash, p.bitmap, p.siblings)).to.equal(false);
     const q = tree.prove(missing);
     expect(await h.verify(tree.root, missing, leaf, q.bitmap, q.siblings)).to.equal(false);
-  });
-
-  it("gas (local reference tree, NOT the golden vectors): member vs non-member", async () => {
-    const h = await deploy();
-    const pm = tree.prove(key);
-    const pn = tree.prove(missing);
-    const [okM, gasM] = await h.verifyGas(tree.root, key, leaf, pm.bitmap, pm.siblings);
-    const [okN, gasN] = await h.verifyGas(tree.root, missing, ethers.ZeroHash, pn.bitmap, pn.siblings);
-    const rM = await (await h.verifyTx(tree.root, key, leaf, pm.bitmap, pm.siblings)).wait();
-    const rN = await (await h.verifyTx(tree.root, missing, ethers.ZeroHash, pn.bitmap, pn.siblings)).wait();
-    expect(okM && okN).to.equal(true);
-    console.log(
-      `      [local-tree gas] member: verify-only=${gasM} total-tx=${rM!.gasUsed} (siblings=${pm.siblings.length}) | ` +
-        `non-member: verify-only=${gasN} total-tx=${rN!.gasUsed} (siblings=${pn.siblings.length})`
-    );
   });
 });
