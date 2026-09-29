@@ -67,3 +67,34 @@ Member 1 publishes `tests/vectors/smt_vectors.json` (>=20 cases: members,
 non-members, keys of all-zeros / all-ones / single bit, a two-leaf tree whose
 keys differ only in bit 0). Members 2 and 3 must pass every vector
 byte-for-byte before integrating.
+
+---
+
+## Reference implementation (Member 1)
+
+- Code: `src/mst/` (`keccak.py`, `leaf.py`, `smt.py`, `vectors.py`)
+- Golden vectors: `tests/vectors/smt_vectors.json` — regenerate with
+  `python -m src.mst.vectors`; `--check` fails if the file is stale.
+- Tests: `python -m pytest tests/mst`
+
+Vector file layout: `keccak_kats`, `defaults` (all 257 levels), `keyVectors`,
+`bpsVectors`, `bandVectors`, `leafVectors` (fields + ABI encoding + leaf hash),
+`trees` (id -> leaves + root), `cases` (tree id, key, leaf, proof, expected
+`valid`; includes non-membership and deliberately invalid proofs) and `mutation`
+(set / delete steps with the root after each). Hex is `0x`-prefixed; the bitmap
+is a 64-hex-digit uint256.
+
+### Decisions the spec left open
+
+- **Band thresholds:** the spec cites the dashboard's `risk.js`, which does not exist in
+  this repo. `src/dashboard/config.py` / `src/webapp/server.py` use HIGH >= 0.80,
+  MEDIUM >= 0.60, LOW below; that is what `band_for_score` uses (a test keeps the
+  constants in sync with `config.py`). The React frontend
+  (`src/webapp/frontend/src/lib/format.js`) uses different cut points (hi >= 0.6,
+  lo < 0.4). **Confirm with the other two members which one is intended.**
+- **UNSCORED:** a missing / NaN risk score.
+- **Rounding:** `bps` uses `Decimal(repr(float))`, so 0.12345 -> 1235 rather than the
+  float-noise result 1234.
+- **Non-canonical proofs** (a default sibling listed in the bitmap) still hash to the root
+  and are accepted; verifiers need not reject them.
+- **Setting a leaf to `bytes32(0)`** deletes it.
