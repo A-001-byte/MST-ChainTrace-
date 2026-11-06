@@ -1,0 +1,10 @@
+{
+  "spec": "SHARED_SPEC_v1",
+  "epoch": 2,
+  "root": "0x4c511d89cf96397e3b758e78354a27188133b4f1bf1a0dad80177c313388e585",
+  "leafCount": 60,
+  "apl_columns_missing": {},
+  "taint_loaded": true,
+  "agency_loaded": true,
+  "gatewayDemo": 12
+}

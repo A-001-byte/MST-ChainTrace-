@@ -10,3 +10,6 @@ dist/
 .env
 .env.*
 !.env.example
+
+# machine-local deployment written by scripts/local-demo.ts
+deployments/localhost.json

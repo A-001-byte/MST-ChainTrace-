@@ -1,0 +1,2009 @@
+{
+  "root": "0x4c511d89cf96397e3b758e78354a27188133b4f1bf1a0dad80177c313388e585",
+  "entries": [
+    {
+      "address": "18ooSDWytsT64KNxzJUvgm5ns4Q2JJZx4y",
+      "key": "0x76dc1d1b357e36358a5fb40d033f6400908434d11dfe1544fdb068c81fe64551",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 9601,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 4,
+      "leaf": "0xfa780c1167bf185c3aac092bbac969dadbc0cbc755aa0e4f2cf0b1da0d9bb98d",
+      "proof": {
+        "bitmap": "0xfe00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x5ecf78e34d2a1ab5bfb240326f29e3f0ed10af14d748101d19d4e67da5cf9ef4",
+          "0xdc3bfa85e82b132e7fa141baca385330d3153f42b467e9139a141649ffe9c172",
+          "0x24490208af00ee357ee8f575d6f36d61b93f732f206002b893bc6b4f0d47ea47",
+          "0xf0aa750b1a9312475a891cbcddfadd0385023901b60cd9123b0409ce115e5460",
+          "0xcfa4811e4976f9173df1ae4fbb78b4a1da492f7dace091bbb44f7cc860e9ffe2",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "1H91HHDt3bEgv3zHk1GqXYnkANJfjHLSZC",
+      "key": "0xb3c5245e3ad9142cd7dca4e84b3eb690140e16a7efb8c7f1f33ea3341c166bcf",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 9384,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 5,
+      "leaf": "0x838ae07b6911ba9cfd998f06bb7b70acf04f620cd3fe82e2156259bd6839d2f6",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x0729cbcc0e4f54d911f60ba05928bbc86fce0b6fdd6fef1a3af17c875ae30af0",
+          "0x495c39f8c370129a1f08a47f6e252c8ff18ee175b768415da6750c216b4e8213",
+          "0xe938b56bfaa31f01017900e0b7ee41997e8540aaef037bdee836743456d53725",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1Lo45R8qkKDurPwtAU4wy6iyYYFpRPwhQa",
+      "key": "0x3bc459277bb47863bdccae37a9b6371665b01a34c2ca5ebd3c7a5b99f6f252e7",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 9187,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 3,
+      "flags": 5,
+      "leaf": "0xcf1e860d2b63a5059102cf30c09051b2bdbe1da4694b6b2c3a139665d713f0b9",
+      "proof": {
+        "bitmap": "0xf000000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x76eebeb6aef1499f4ce95982ecbaca422600549e6fa07a8dbb2f1537cb41e21f",
+          "0x0518de51df410cdc086226913a8ee268cf19f23ab1549dbb4a099593ccb46ca1",
+          "0xbee25f28399591730d73022c4492978d2b27fb4def0d2318c262c1ddbdd81aaa",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "3JUgPFWr3kMLrm1cauMcgcEMm6RZtLWnnM",
+      "key": "0x51671e0d243d45dfcd3727337ebc86d8f372069c89d01a512a492d218f0b3386",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 9174,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 4,
+      "leaf": "0x0e2d80bf7b39388f9bbb0398ac217bc9400d013c014537d7e221af50f4c5452d",
+      "proof": {
+        "bitmap": "0xfe00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x2a929d8117a867bcf676e0be2bca7817503724c0ed38fb37ed4b3d03482a6330",
+          "0xfbce24e35262997a8eead89114122de48bff33f601b2c8c12b06c1afeba28a34",
+          "0xaaccdbaf44ff9f395e6cc8f506ebdefa06319c9d5eef8f4db62a266cf685762b",
+          "0x769e9a1c1839cc8de13d026868e0c4e6c53ced7dfb203cc60c2d3f06d4d02c0f",
+          "0xc40764b1e786e1ddb52265ead1d623196db287ab6465057e8214bab1f1ca849d",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "3Q6vpPnVByYUibeDLUYMD2ExuMsErzYFxw",
+      "key": "0x1d630bfa90061ae522ea1acc9db111efcfa6fe7cd008e955f6cb24ceb1836dc3",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 9159,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 4,
+      "flags": 0,
+      "leaf": "0x366eca4391d6b2f51a2be62e7fb98d758c8be7ebf5a05ae6b9731110984ee671",
+      "proof": {
+        "bitmap": "0xf800000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xf288a4a17eae74db5fb31eb9a6f3fe36b981974797504735560bc520ed4ad38a",
+          "0xe677c4c62ad11d27b437dabb83f7cfc71b8210799516e9046cbb165a312dad99",
+          "0x5c0c2b84386739c993c01fd035e5edaae8d244d524c188131309aeb92bc4601d",
+          "0xbee25f28399591730d73022c4492978d2b27fb4def0d2318c262c1ddbdd81aaa",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "3NLyzZRyEMmwsASjT88NnYHotkCxkjw4oT",
+      "key": "0xe92112d80124ad588c6315cc26b4f4df7c6f56e762043fdc45031d7fb94ba471",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 9113,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 4,
+      "leaf": "0x7865fe0cd292c3e75dafbcc828127bd90dcd796b477d7aa147f27b85f6c41d6a",
+      "proof": {
+        "bitmap": "0xf900000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xd379f74752d4c9c2e707dbae328bbd6b01337878df34b5580e0a10210c35d82f",
+          "0xb8a1242e996bc3da5a06bfd6fea5b37c8a6e5e09298376e0c2f814b3df1deb8c",
+          "0xc786a95186eb5407f7bccc436c706e87f5f338a846043d970b578bd50729665a",
+          "0x6e738896f2c43caec9936d518712740b4f46ccbca2c921815d5713ae0c650358",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1BBLwrZpbAvYX5HZbwxVFGMQL9vVQrMpxk",
+      "key": "0x9f3ecdcb7dd5522e62906b8eea8e6400a16178971fe9c6bc211895ee9c1834cb",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 9042,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 3,
+      "flags": 4,
+      "leaf": "0x85b135efe8d1410067ee171542318a683163b53c95c35f2cfc607c7019f78c35",
+      "proof": {
+        "bitmap": "0xf900000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x745375d10f15909ba3ae6d3b91dc1115fd9f6c2e266c8c298bb718860ab8ac80",
+          "0x2826038288be8e672be2acfed2cf67140085395b54839779d0cba533cefb4baf",
+          "0x206accb6a3d8262274132fc54e77ffeec44b6271f3b1fcd9b3ccd669518f3060",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1FvtWwP3ePJDeR6K7ZePGujUuusUTds8Vy",
+      "key": "0x9e8d6a9dd8debfaae9d2c5c4b2558c73e42402abf93e336e69cd454e6c1b2436",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 9027,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 1,
+      "leaf": "0x8b41fca1a33a7d543f68cab94cfa9e3b6305d90dd1d4e437d91e58071e385e84",
+      "proof": {
+        "bitmap": "0xf900000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xe015d50a7401341768e29feb04b3535ba3c4a8ce65c3b33e82b8b3d8baa2d9dc",
+          "0x2826038288be8e672be2acfed2cf67140085395b54839779d0cba533cefb4baf",
+          "0x206accb6a3d8262274132fc54e77ffeec44b6271f3b1fcd9b3ccd669518f3060",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "3MbiUzrxs7tkpBZa57iCh3L2yvdCHTTDNf",
+      "key": "0x5ab05900d115809ba56204c0b706c6db7714774b575661a48a41a06efa3c2e5c",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 9024,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 4,
+      "flags": 4,
+      "leaf": "0x524fd5e863d7c7d3bae124f238db1bdbd5df397e6100a5378133328d5ca15285",
+      "proof": {
+        "bitmap": "0xfd00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xc576ccb8c6a7d4b8893af062796917f74e0a23b223c5de4b19e89fd287234cb7",
+          "0x1a9eff8554799f22e8c14eef39179b4611f5a7f6a773f96b996059f0dfe52722",
+          "0x7ec77c3ef4fc072e583ebefae5c82d2d4077bfcdc70177542b7e98458f0062c5",
+          "0x769e9a1c1839cc8de13d026868e0c4e6c53ced7dfb203cc60c2d3f06d4d02c0f",
+          "0xc40764b1e786e1ddb52265ead1d623196db287ab6465057e8214bab1f1ca849d",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "39sfuA8pY4UfybgEZi7uvA13jkGzZpsg5K",
+      "key": "0x8b5cbf7735fbb3ee80297f0d7b506a86b422bc0a532220de28184f10582123b0",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8984,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 0,
+      "leaf": "0xc330dfeff5f9bdd2f1eaa82cc58021175c09ec9d49446ab7d45beec87b491ed0",
+      "proof": {
+        "bitmap": "0xf900000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x20280fe8a59a2775613cd9cd7469dd2fee32779929888fdb08e7726049c947d8",
+          "0x3252bee35df7ef569a4ff4d779d060186c2f4f96fad9641bacdebfd84921e4f9",
+          "0x2d431bc57ea22739d28cdd0d61817e7211bbec8367253f0bd646b349839953ff",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "12k7kXAo7JjcHTnoPxpYsYQRVDAZaM4Jfq",
+      "key": "0xfbbf6c71491dbf43159b44a1eb574e7dc3e53a2e69c778730d67f46a06d3f99d",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8984,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 4,
+      "leaf": "0xd3ef538e93d5e1bf9d9cd3e9c592c6877722b993f02a5abd77ed7cbe67c04da6",
+      "proof": {
+        "bitmap": "0xf800000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xa8eb55923f7392648e26e8677e38bb9dd2a756ee63b78b834debc0e3db9c99f6",
+          "0xa1d072687a8318998cc6644bbd7868780ab557b0e546d1eee39f0a556f2a881a",
+          "0x6e738896f2c43caec9936d518712740b4f46ccbca2c921815d5713ae0c650358",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1JpG4w6KTZjtPcdpMHWmKMgGYiaxakHwYg",
+      "key": "0xa3f6007b6f7bcffeb6d2b322b57675e34f89dacd0bad0ea5093623aa95c33ed4",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8968,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 1,
+      "leaf": "0x5bd1416bbe0ff33f2eae941fd66397e185fec1f3a64ea4cd600e1685e2552e79",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x19b1ae90e8acef2569d354aba485ceb6fe8a23ca927b2a5aba669d4303481c50",
+          "0x7b2f2be91220ecb8f028e9a1334a40c1893574aae581a1b22f9cf32eadbe026e",
+          "0xfc5c108eaa8ba60dc820a82dd517fd5b87636528b3f37716335769d7d191f2c6",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "3KNhjViXZm1pdc6nrUpyWTBThbYMUkpDbR",
+      "key": "0x55b5badab1562a97f5ffbe49f3bca0c9f35e2339db2017e2622ac1a70bcad8d1",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8946,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 4,
+      "leaf": "0x5f82a475490acc5648cd2958d6099115578653e1f4ee70752c51a5dc48fa0954",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x70e128640980a5b3ccbadb5ee81126a8d40a1b036655028b82541a88eea0dcf3",
+          "0xaaccdbaf44ff9f395e6cc8f506ebdefa06319c9d5eef8f4db62a266cf685762b",
+          "0x769e9a1c1839cc8de13d026868e0c4e6c53ced7dfb203cc60c2d3f06d4d02c0f",
+          "0xc40764b1e786e1ddb52265ead1d623196db287ab6465057e8214bab1f1ca849d",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "1Niuz7qEPRZqrUwLPKKgMvYqUQKhoBupjX",
+      "key": "0x281fc4890a3653400dfaed30f9ce3c2cfb670fe7dd4572e2c94d3eea4274dc42",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8932,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 4,
+      "flags": 4,
+      "leaf": "0xd362ce0da45483182fd6810db3a00567240a6a7689962596e46218280677d29e",
+      "proof": {
+        "bitmap": "0xf880000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x6edb6cffa2f5b4edbfa39dd030685711d603feece75107583d4f5ae6566b54ce",
+          "0x31972b5dbb55df782a852d98934b9e2cfe193fe8460e9d1fe087591baaba0740",
+          "0x0749080b5981eb7691252c73788ed6e8496aa8431ac08761aaad432949ffe1e4",
+          "0x0518de51df410cdc086226913a8ee268cf19f23ab1549dbb4a099593ccb46ca1",
+          "0xbee25f28399591730d73022c4492978d2b27fb4def0d2318c262c1ddbdd81aaa",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "141Zu4pHzkYZefE2audb1FU1gRkJ1TNKT6",
+      "key": "0xb5660f9c22c850f3dc797bea50d85c7f9cad2026a875f96a3a1fcb630f81ecfb",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8895,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 4,
+      "leaf": "0x5854877700a1255ae2e781d1069b462321b8b4f30959877530823fa77f21ede1",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x2eb3198648469baf2e4905fbc5ab9c4410a263300da42854996132369a287c30",
+          "0x495c39f8c370129a1f08a47f6e252c8ff18ee175b768415da6750c216b4e8213",
+          "0xe938b56bfaa31f01017900e0b7ee41997e8540aaef037bdee836743456d53725",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1QEZ1QbxFPuygDosjsn5qpmQU5yfxfhKiL",
+      "key": "0xae258f311333a9fce2d3a9282899819e7fd46c5a53c322f9e7c098790e19bea9",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8892,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 4,
+      "leaf": "0xc61deb761c4742b6e7a6cb12ecded775a6d2752e2a01c03c829dd0b82a96219e",
+      "proof": {
+        "bitmap": "0xfd00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xe16d93051109e0337e883218ca676bc793aca0241f143cdf4fa434cd0a8774c7",
+          "0x83881b5c3c95f76b2ff4f581bbf5021276ed7171aef48feb6dcf34a74653ab7d",
+          "0x6ed58c765552a0319a8b4fe1b26888b76fec649b507524a66bd6e510239f86a4",
+          "0xfc5c108eaa8ba60dc820a82dd517fd5b87636528b3f37716335769d7d191f2c6",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1GDYsY9M7Mg9SiF2D3vXAAAdDH8W3u27ku",
+      "key": "0xdff251828ff4169aa4f24767b5d85407b95a02a61e8512c0de22d8da7210ea32",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8870,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 4,
+      "leaf": "0x52bd90baf71a219aa344e2b9fb790d3f79eadebd5c656564ef94eaccd21ab299",
+      "proof": {
+        "bitmap": "0xf600000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xe2c7339e05a7c0ff79aa14f1f5819acae3458360d206e7b280fc5803bedff783",
+          "0xee0b87717eb793dd657cdd2e801fc5cab293a6a34aa9fead8647b714d1c22afd",
+          "0x720679bf4c1dbd4364166a109936d8f89b8f537327459f94e3d35b914d31a69d",
+          "0x71e65f67ac41b6e908670680a3d4cdfd58fec1bd345f09da19d95bee7075bf77",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1KNd3pk9M2W2K92UVY7o1XxCypRseQfVam",
+      "key": "0x8a4585c86dbf5eb1102e40ddfdadc42ac8eef76520c31093d0bb07fdd5b695c3",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8826,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 4,
+      "flags": 4,
+      "leaf": "0xcf028dd548da72a85509a6aa13e2f500c798e70269d762d637a7f9033c36a1dc",
+      "proof": {
+        "bitmap": "0xf900000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x7fa0a980a44e3832c925becb8a13022ee4ee272359a7309353380906b4e6dc1a",
+          "0x3252bee35df7ef569a4ff4d779d060186c2f4f96fad9641bacdebfd84921e4f9",
+          "0x2d431bc57ea22739d28cdd0d61817e7211bbec8367253f0bd646b349839953ff",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1GQSnzh9JRgipxC7btKvD3rBS8Zj8SVnAo",
+      "key": "0xc9d3f0d2446b9622e58a25e0531cc5d5f7971e2722694b1160a893a4c3c4806a",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8823,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 0,
+      "leaf": "0x1510cd1c5edff5b0e531172db23ab62c86abc344300fd3dcc04d8e5ab2909815",
+      "proof": {
+        "bitmap": "0xfa00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x416438d219a61b1f47ee99b8404213f1bb23a2273a4b7c38aba4d7924bf17463",
+          "0x2cbc13623dd84cbb6f14430524bbeda3300a7149ee475c3a722ab105aca1cfd4",
+          "0x10fa9dd16ec3e4bcc2881d64251753eceb93add09e79f13e9a41f29d5c5ca535",
+          "0x71e65f67ac41b6e908670680a3d4cdfd58fec1bd345f09da19d95bee7075bf77",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "18mHiyfY9yaHq3WNb9dEFv7pjnpLfH7ZqP",
+      "key": "0xc0cc6d1b1df8bac06a7c32b5566b2d0996068d1d6df49679a6ef759628d25783",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8818,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 3,
+      "flags": 4,
+      "leaf": "0x8a82e91b35a42a1f919f7da0352a88929a78e90adeb82184a5c415a6c31ad645",
+      "proof": {
+        "bitmap": "0xfe00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xd16ad25c3229496e3181d35c770322711e7c6f3c8a98a45b1fd7e99d4f3c072a",
+          "0xc7444624af3217fb2011919cacd5a39c0cbdcb3d962c4e0d9501c5227e64bcef",
+          "0xb599dfe5b70e43a34f62152b18c005322fe28dc7eb6a4d8d3b863e0e28a2a5ba",
+          "0x10fa9dd16ec3e4bcc2881d64251753eceb93add09e79f13e9a41f29d5c5ca535",
+          "0x71e65f67ac41b6e908670680a3d4cdfd58fec1bd345f09da19d95bee7075bf77",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1AtHBEowGYvaDbjJuLKptijmpUaLjk2y2L",
+      "key": "0xe1d6deb5ecf78982ad8f6ef9957f01a01ee474c3ec00e4c3a6856df134585f1a",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8769,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 5,
+      "leaf": "0x3908d66eab7c4d0756d6cb022ff05f30cff91298b001def5a9f7fda92778bf6d",
+      "proof": {
+        "bitmap": "0xf900000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x2eae348c6a938daf9836499228005dbf17a840743bc8aa1b5135977b670a38de",
+          "0xec0ff2d464217121cd99ddf9e8e543acc475e5c1385531c2a486d9b9ca425c32",
+          "0xc786a95186eb5407f7bccc436c706e87f5f338a846043d970b578bd50729665a",
+          "0x6e738896f2c43caec9936d518712740b4f46ccbca2c921815d5713ae0c650358",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "13va7xTm4HQ3NMQ7GVUPFfrdffUqy39Qsc",
+      "key": "0xf7827c891196602fc374487acba8099da70dd2ee73a3fc2aaca3bef456eafdf7",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8745,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 4,
+      "leaf": "0xe66394327692d420f66129b41b993860c211e857071e6a260cf58c33286de3b9",
+      "proof": {
+        "bitmap": "0xfa00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x33473416564d15a6cd54987740a4feab84ea7a6c763eb0cbfcbeebc7843484f0",
+          "0xf7c5a67e035d2ccb85a6b86b612ff203ff8deddf6d920c31c2c3e77888595e76",
+          "0xa1d072687a8318998cc6644bbd7868780ab557b0e546d1eee39f0a556f2a881a",
+          "0x6e738896f2c43caec9936d518712740b4f46ccbca2c921815d5713ae0c650358",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "14hSZ6Ue2xZBQe6VfQgM9jAZmHV9n5Xdsy",
+      "key": "0x28c81595732d9f25a920c2404987df6aba943a8cee6f98e669f21d585c94dd2a",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8741,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 3,
+      "flags": 4,
+      "leaf": "0xadbbc2cde663565e373331077501370dbc7155c7558346a3dd39dd134d03ceff",
+      "proof": {
+        "bitmap": "0xf880000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x8cc5513c4bfd5e59285eeeb19fee746d52b626453b5d537d2b8d96926bc9fc9f",
+          "0x31972b5dbb55df782a852d98934b9e2cfe193fe8460e9d1fe087591baaba0740",
+          "0x0749080b5981eb7691252c73788ed6e8496aa8431ac08761aaad432949ffe1e4",
+          "0x0518de51df410cdc086226913a8ee268cf19f23ab1549dbb4a099593ccb46ca1",
+          "0xbee25f28399591730d73022c4492978d2b27fb4def0d2318c262c1ddbdd81aaa",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "39nz1urm6Vbkhzdu6FYedBys1Wzc3JFWbE",
+      "key": "0x912e07c49254e5bc254cbaf3adf5fe416e47274fecedd183170a609a00c27f6b",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8713,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 3,
+      "flags": 4,
+      "leaf": "0x5301cc764fa8ba9316e80e978bb47d0974c0446a4994fc9c9964ddf53ea6e295",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xecb3f11ef2fd042a4a09bf978018fcb73cadbb32d690db436064832b07156020",
+          "0x9c040e4f21ecff69d71338e0b4f26ab8ebb1c4f411ea8e3ef249c8b4fecb0780",
+          "0x206accb6a3d8262274132fc54e77ffeec44b6271f3b1fcd9b3ccd669518f3060",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "14HUp1PY3At6mNVq5vDpUJmFUYVVDru5cW",
+      "key": "0x805d8a6c7fff676d8ecee975c703238cd12ade87e19caf49361a0c769cc7f1f3",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8688,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 1,
+      "leaf": "0xfd539fb970778d996d67bac399eee790e981d56062b9ca2fbe361f455f6d7c21",
+      "proof": {
+        "bitmap": "0xfcc0000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x0b3ed9516ef45ac7244958b0ea890030f9077722b813092e77fbb1a19e74eb35",
+          "0x2fb1d90160af68c7b00121080832d9fa8246b1f30a6b48b52e6ee9ada5931a22",
+          "0xfc0e49ffd27eeb420e9d9c7fc0243a86894868e81d8ed900a35219bd864a5e9e",
+          "0xd8f4cf79e9895098cca9cbdd80e66b05b78b8f4ce884e9d031ebaa0902c50ed2",
+          "0x2d431bc57ea22739d28cdd0d61817e7211bbec8367253f0bd646b349839953ff",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "18GJvbZ6uP6D3uvJp37GvMpuh7jgsmDtoE",
+      "key": "0x442541694846035108884d7448b37be17078a889370cd916a19dbe40d7cccbd5",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8681,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 4,
+      "flags": 1,
+      "leaf": "0xa2f345c48f5f13db869e5e6fd9fef5f6c66688855936fa59b0659397912e96a6",
+      "proof": {
+        "bitmap": "0xf000000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x8f110595927762dedc0989269bb83d35f99e120625ae0eb9876ad7e18fe42067",
+          "0xc40764b1e786e1ddb52265ead1d623196db287ab6465057e8214bab1f1ca849d",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "1JUroxTMFPtP5EWaF6HtDtNXaFWM2psidc",
+      "key": "0xa664902de89b0be9d9fa5462033c895c34650c7205286d520ed39c91e1279660",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8674,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 4,
+      "flags": 0,
+      "leaf": "0x5fb0f0a29432fd69bd8f223923a5cca83ddfc3b601b4b1097dd0f5ef1b750aeb",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x5c9753050d1cee38dff6a1f9d59c6e601ac5153a6267a3281de16ba84d7c0bdd",
+          "0x7b2f2be91220ecb8f028e9a1334a40c1893574aae581a1b22f9cf32eadbe026e",
+          "0xfc5c108eaa8ba60dc820a82dd517fd5b87636528b3f37716335769d7d191f2c6",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1DYyueWpZriK9mdCKqUPiTKg3vaHYaPdCK",
+      "key": "0xdac5204ba20966a1d5ee68777bf16353e7c3289a1fba4bbb7d2c3f852aecb2a3",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8665,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 0,
+      "leaf": "0xd28267f6a12e36207144f40f3c7fc6af845bb16979b7c375b1257f47c1a3707f",
+      "proof": {
+        "bitmap": "0xf600000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x2bc92a95f653984f62cd6041c0eedc58a3eaf3ba611c9cc622571b2c7b6ce353",
+          "0x7ed706df2b16d0ffa97c3859f5177c7f10f75527ecec5d5c45e6815ecea87c69",
+          "0x720679bf4c1dbd4364166a109936d8f89b8f537327459f94e3d35b914d31a69d",
+          "0x71e65f67ac41b6e908670680a3d4cdfd58fec1bd345f09da19d95bee7075bf77",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1DGjZ27wG9Rx5z4xEiCQpjzqvRVAJeMeX5",
+      "key": "0x800fb97a0388be8b89c29b1449d31e31bd934ff17e7c70fc5ae927ebc9ae4b83",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8655,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 0,
+      "leaf": "0xecabf04ef10939746b756af55ad98bf1223998046a27420d6c4add6971e71f3d",
+      "proof": {
+        "bitmap": "0xfcc0000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x8949bf5fed355e2416973070083074aace06de4c6845641e11fe027f19348c7b",
+          "0x2fb1d90160af68c7b00121080832d9fa8246b1f30a6b48b52e6ee9ada5931a22",
+          "0xfc0e49ffd27eeb420e9d9c7fc0243a86894868e81d8ed900a35219bd864a5e9e",
+          "0xd8f4cf79e9895098cca9cbdd80e66b05b78b8f4ce884e9d031ebaa0902c50ed2",
+          "0x2d431bc57ea22739d28cdd0d61817e7211bbec8367253f0bd646b349839953ff",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1DgBV9TGcFML7XBrx92xYWY7krwKnqEx2c",
+      "key": "0x5d468e2677323cc59fcb75dbd83b7527f8eea6131456f078834e9e5931206513",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8643,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 3,
+      "flags": 4,
+      "leaf": "0x28e4a0169b7e132c8473a6b3986d79c123f089600fda11b0b046ad790afc8551",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x5769ed74e900924288c588f0b68c534be24ff75a1c860515ac51f44c548c6f68",
+          "0x7ec77c3ef4fc072e583ebefae5c82d2d4077bfcdc70177542b7e98458f0062c5",
+          "0x769e9a1c1839cc8de13d026868e0c4e6c53ced7dfb203cc60c2d3f06d4d02c0f",
+          "0xc40764b1e786e1ddb52265ead1d623196db287ab6465057e8214bab1f1ca849d",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "3D1gN3jhtppKxzDFJNd9LuzFzpj9Gue8cY",
+      "key": "0xf4ab3f734ff234f2fe0f92180944a11786d0efbf11b90d4bedecd1e4470dd3fb",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8638,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 4,
+      "leaf": "0x734b7efbd0554dc752ef57182d481cd7f94619b81e2d0cb3e1c8ca4ca25d40d8",
+      "proof": {
+        "bitmap": "0xfa00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xc8065f72f0f1bbcc48e9b8e7bc5099455efd7bcfc116ba8485753d90393e8aeb",
+          "0xf7c5a67e035d2ccb85a6b86b612ff203ff8deddf6d920c31c2c3e77888595e76",
+          "0xa1d072687a8318998cc6644bbd7868780ab557b0e546d1eee39f0a556f2a881a",
+          "0x6e738896f2c43caec9936d518712740b4f46ccbca2c921815d5713ae0c650358",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "12Vm7yZwr45D2ZTiA2w3eY5RTxTP1WNYpw",
+      "key": "0x8093e885bf21ee516a52f7ef895ded7f974e785c67f9d267ee6ea79e34351b0b",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8630,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 0,
+      "leaf": "0xefa7b87a6ce03cc309f8ac654449e6e56d6d4a5c35f35e624e29abaf38d84fd6",
+      "proof": {
+        "bitmap": "0xfc80000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xf78434701d9ce7c3e49925b1749c274ad9b6487518b1d98b6ab81447200c8ef7",
+          "0xfc0e49ffd27eeb420e9d9c7fc0243a86894868e81d8ed900a35219bd864a5e9e",
+          "0xd8f4cf79e9895098cca9cbdd80e66b05b78b8f4ce884e9d031ebaa0902c50ed2",
+          "0x2d431bc57ea22739d28cdd0d61817e7211bbec8367253f0bd646b349839953ff",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "38ussYSBjiwc6or1C2Ge6ywfMvAu1Luzpw",
+      "key": "0xaf6a2daa24120e50679bf50de6bce8a76ef917231bbd2510593a89d747f0ad1d",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8574,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 4,
+      "leaf": "0xbf3107bd361c8d4608abaf8457114e63fe0fb25e68d21dfea0e763e4f76dc98b",
+      "proof": {
+        "bitmap": "0xfd80000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x6f81dda28d564e8abb9ad7aa00e5b1039c829376e14cdc6859da2b1d73954f99",
+          "0x2491d77fc1ac915a09ce569b0a1ea0f08b7c651f11459df746755142aefb03fa",
+          "0x83881b5c3c95f76b2ff4f581bbf5021276ed7171aef48feb6dcf34a74653ab7d",
+          "0x6ed58c765552a0319a8b4fe1b26888b76fec649b507524a66bd6e510239f86a4",
+          "0xfc5c108eaa8ba60dc820a82dd517fd5b87636528b3f37716335769d7d191f2c6",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1Kr7FVYjYUshCE8Df2dR14cBUGsdK3Jp1Y",
+      "key": "0x5bcd454b139c0a7150fc737576fe847c512509f0b7293381cbd765db06222db4",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8573,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 0,
+      "leaf": "0x4ce1abc2aeab2444864d0c0b7fa45d25dae1baa75fc1e5d6da7f4a167bc036cd",
+      "proof": {
+        "bitmap": "0xfd00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x5459ae5136aa0aed0cabc9d34b1adbf0cc0a076a774df88b19e56d57c9ee7025",
+          "0x1a9eff8554799f22e8c14eef39179b4611f5a7f6a773f96b996059f0dfe52722",
+          "0x7ec77c3ef4fc072e583ebefae5c82d2d4077bfcdc70177542b7e98458f0062c5",
+          "0x769e9a1c1839cc8de13d026868e0c4e6c53ced7dfb203cc60c2d3f06d4d02c0f",
+          "0xc40764b1e786e1ddb52265ead1d623196db287ab6465057e8214bab1f1ca849d",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "1NkJ7Vnu4VGkorc4676ascCwbZpuq91Z4t",
+      "key": "0xca7a3caec182cb04d2acc7603dd6144360b282af3c55e6f25bd7a80de0447156",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8552,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 0,
+      "leaf": "0x3f7379e66a69ef441ec96f24c543b5d5e9009f93528c9e7c34685606a47051dc",
+      "proof": {
+        "bitmap": "0xfa00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x15d5b58fceb9017c59ff10a7028dc3d3554cdb2fb4951902bb90db4279536dc8",
+          "0x2cbc13623dd84cbb6f14430524bbeda3300a7149ee475c3a722ab105aca1cfd4",
+          "0x10fa9dd16ec3e4bcc2881d64251753eceb93add09e79f13e9a41f29d5c5ca535",
+          "0x71e65f67ac41b6e908670680a3d4cdfd58fec1bd345f09da19d95bee7075bf77",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "397RUbx4FmrAgAZgfTvk92bZShDmwihGzZ",
+      "key": "0x94d6dd580f7680fe6e9557eaf8279ac72323093feed3bfa0201d18be949b35ad",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8547,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 4,
+      "leaf": "0xec70086b401fa49ed930de9982b79c497ff0df8cf54ff8818ffbfaef457f0e9e",
+      "proof": {
+        "bitmap": "0xfe00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x7a84e99d6bed057859fad7652e73b48809e9d6ae1b42268e3c869f4fece64fc9",
+          "0x0fd03d7ea15a704666b53f5bd91d1665f0c60989eea32c31ebc5ff4a446dd5a3",
+          "0x9c040e4f21ecff69d71338e0b4f26ab8ebb1c4f411ea8e3ef249c8b4fecb0780",
+          "0x206accb6a3d8262274132fc54e77ffeec44b6271f3b1fcd9b3ccd669518f3060",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1MrpNxXTMnxizfeNs8Lr4N7AYf7Bu4P3ey",
+      "key": "0xd9b0c28da64491f293b346a2658678fb68dad346fd31977cc9b41a96e8eb6895",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8527,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 0,
+      "leaf": "0x27b9bd151ad8b6569f67428ddb9b8566f30e3ee8b4ef025af7dae0eb175ebb8f",
+      "proof": {
+        "bitmap": "0xf600000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x82987fc42c2f1782150bb4d74dff7d52116e5c23a181dc5eb0304b073dc35f8c",
+          "0x7ed706df2b16d0ffa97c3859f5177c7f10f75527ecec5d5c45e6815ecea87c69",
+          "0x720679bf4c1dbd4364166a109936d8f89b8f537327459f94e3d35b914d31a69d",
+          "0x71e65f67ac41b6e908670680a3d4cdfd58fec1bd345f09da19d95bee7075bf77",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1EwX3e6PRHGn3EUXoarmjaxzuFjfnfb6hx",
+      "key": "0x07455c8f443f3ab070ccb6245cf4dad669b280ea9d1005b1bbd8e78ed8c29ede",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8522,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 3,
+      "flags": 4,
+      "leaf": "0xd45ca95644fef35267a8ca54ec453c585c741c45036d82acbd407544a69bdbd3",
+      "proof": {
+        "bitmap": "0xf000000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xc5af931ace9e386fc2936e18cd9a459a377ac8642a117bf22ef39a5499135ea7",
+          "0x5c0c2b84386739c993c01fd035e5edaae8d244d524c188131309aeb92bc4601d",
+          "0xbee25f28399591730d73022c4492978d2b27fb4def0d2318c262c1ddbdd81aaa",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "12ccSQ7vJZTXgQRkyVwTQGhFKaiqK14uAw",
+      "key": "0xbd97f9c516f74d49977dc39598a64b347b07cce0a8715349f87527c5a5ed1c49",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8500,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 4,
+      "leaf": "0x4a003c5cdd27b55af261dd3effc99b98a5c585a1fc25e95b83c6d9e421b042d8",
+      "proof": {
+        "bitmap": "0xf800000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x10e2908bb525569b6f50d84e33de28dc51b807b940cda4c15c312121be35141f",
+          "0xe938b56bfaa31f01017900e0b7ee41997e8540aaef037bdee836743456d53725",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "16xidiRi59WLN3GoHWAPnpFTq3PoMWxURV",
+      "key": "0x25a10f1b8ab4bfc5e567cb7863836553699169397515c423a6e64d9607b901cf",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8499,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 5,
+      "leaf": "0x453efa6f5455559cc932dcc6cb5b9bdc6d4f4a60245702982c72dd4e47853a33",
+      "proof": {
+        "bitmap": "0xf800000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x4863fc94cae74538d58e1d35ce057bf06c0300b674060edbb62b9a999271414e",
+          "0x0749080b5981eb7691252c73788ed6e8496aa8431ac08761aaad432949ffe1e4",
+          "0x0518de51df410cdc086226913a8ee268cf19f23ab1549dbb4a099593ccb46ca1",
+          "0xbee25f28399591730d73022c4492978d2b27fb4def0d2318c262c1ddbdd81aaa",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "1K5KTHhEB9Mcida1xSehtYLjyGf7QYncZx",
+      "key": "0x97bf4b315db3fc549b18ede65dbf629d0e096aada3000183d87adc044592b541",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8495,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 1,
+      "leaf": "0x5680e24bc8e14157455d17a5878367f514072d9ca66f21c1485ea1befec018ca",
+      "proof": {
+        "bitmap": "0xfe00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x5043eef156f5fa5ac85b6cc81c6dae83a20b4a0c83490be9c8f9b28553cf6a07",
+          "0x0fd03d7ea15a704666b53f5bd91d1665f0c60989eea32c31ebc5ff4a446dd5a3",
+          "0x9c040e4f21ecff69d71338e0b4f26ab8ebb1c4f411ea8e3ef249c8b4fecb0780",
+          "0x206accb6a3d8262274132fc54e77ffeec44b6271f3b1fcd9b3ccd669518f3060",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "18mKBWckBim8qSDre1e6YQjxNN8KkCJfVU",
+      "key": "0xddb9f91c255bf82bd9ffb8693f97f8ffdc8d7df69d1fdb2f651791700025ef24",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8486,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 1,
+      "leaf": "0x84d343246976fd609e84f7b5fd9060cf2bf29ee2d8fb09aeb69775f0b44b9074",
+      "proof": {
+        "bitmap": "0xf600000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x13d87fd0cac8054ba65c2abd3519b00c35dcdc91972c32aaa3dad10d16f7658e",
+          "0xee0b87717eb793dd657cdd2e801fc5cab293a6a34aa9fead8647b714d1c22afd",
+          "0x720679bf4c1dbd4364166a109936d8f89b8f537327459f94e3d35b914d31a69d",
+          "0x71e65f67ac41b6e908670680a3d4cdfd58fec1bd345f09da19d95bee7075bf77",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1Gz4RywfgHejkZ7A5RdtBRVGcjadSrrjiG",
+      "key": "0x7b2a3e501bdbc3c8a11de87bf4ec06c3c37541b423d698a80077ace7515e0b99",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8468,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 2,
+      "flags": 0,
+      "leaf": "0x77af5d9d839bdc631fb91b3f8766d6cd48771de28b7fd61dea4ba3acfab40585",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x60080f07eb5c2813534d6fd374aae0c04d2ca8c08e61095485e963293535270b",
+          "0x01c49f42c8c76c7f84538e266e4450c0ae40876310e158ca1cbf8f4eb31b9ae5",
+          "0xf0aa750b1a9312475a891cbcddfadd0385023901b60cd9123b0409ce115e5460",
+          "0xcfa4811e4976f9173df1ae4fbb78b4a1da492f7dace091bbb44f7cc860e9ffe2",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "3CZtrcD8W3ut85Me7km2HgLyrnGQ5GrXbE",
+      "key": "0xaae2f7ead89154fb535783243cb1b56ee5dfab8755e69faa3f1d637c646d96cc",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8457,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 4,
+      "leaf": "0x4f18590ecc6fb7060f1e780dda244088185aa6156658ed9335313030112fec23",
+      "proof": {
+        "bitmap": "0xfd00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xbb9d9ed08d3ae3f70e4623a5f462676051c63840ba4d7ae4fc28cf66c1095efe",
+          "0x22243c8da3135a315413d5362fb6f5a2c3e431c865aa8fa5026eac05521440e4",
+          "0x6ed58c765552a0319a8b4fe1b26888b76fec649b507524a66bd6e510239f86a4",
+          "0xfc5c108eaa8ba60dc820a82dd517fd5b87636528b3f37716335769d7d191f2c6",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1taKuQAcYTP8VUbxsGu4Byi38xsay952v",
+      "key": "0x1013cc34e1713f8111e7dc208cd9e6ff093b5f7e69952b501432c26208d219ed",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8446,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 3,
+      "flags": 5,
+      "leaf": "0xa6aedf6c9a02bb86e18584f848b4d25056e930edba432ece5e0953fedf7e3051",
+      "proof": {
+        "bitmap": "0xf800000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xa6f5b9c1974d7b05f8429a7e359a393404d1d981fcee1e9c9ecc332ce3fc5a8e",
+          "0xe677c4c62ad11d27b437dabb83f7cfc71b8210799516e9046cbb165a312dad99",
+          "0x5c0c2b84386739c993c01fd035e5edaae8d244d524c188131309aeb92bc4601d",
+          "0xbee25f28399591730d73022c4492978d2b27fb4def0d2318c262c1ddbdd81aaa",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "144fuZHP6PvKiPYYNFVVpHuc6o3KxhoEoc",
+      "key": "0x6ee605f1f82810fe0d8461f134344f2d4d1cb4c949fb12f0072e8e2043213823",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8446,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 0,
+      "leaf": "0x27196f21b97526bea561f3453ab99a6aafddad762c65ec369e400ae1bd51c742",
+      "proof": {
+        "bitmap": "0xf880000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xa4ea6223c205c698e9100dbc5884456e27a21d32872d731be93bcb8a348487b3",
+          "0x8ad286de8c421327b8c77cd5bc57d950981ffdf5ac8599d11f8cf69386472972",
+          "0xdb000bf031777316f00a656ab187fa42d13201527a2d9a130d57dc7d521e4a75",
+          "0xcfa4811e4976f9173df1ae4fbb78b4a1da492f7dace091bbb44f7cc860e9ffe2",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "1Hmm1KKPDUnwzZjRLSRPtVtTYe2KrEE4U3",
+      "key": "0x7d339fc1903a629ad214717260e71fc894fbbf2a365429b745ec09fbf0097f5e",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8434,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 1,
+      "flags": 4,
+      "leaf": "0xcd03692bf17e586b5ac19e4546c1dc44dc8d075ee0f8d3f014e789240163ba19",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xa252e492f61b582c9f20af00b84d1032ec9ba611b89fe619218087258e0a5afa",
+          "0x01c49f42c8c76c7f84538e266e4450c0ae40876310e158ca1cbf8f4eb31b9ae5",
+          "0xf0aa750b1a9312475a891cbcddfadd0385023901b60cd9123b0409ce115e5460",
+          "0xcfa4811e4976f9173df1ae4fbb78b4a1da492f7dace091bbb44f7cc860e9ffe2",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "13PTX5TUaGvPPZ5j1ushpDzeFqwVCzkwXg",
+      "key": "0xaf8c9b6390ee9cc41a9547fbe7aaa0b9a40468249d1ad15e3a557a2aa567b83f",
+      "epoch": 2,
+      "band": 3,
+      "riskBps": 8429,
+      "haircutBps": 10000,
+      "cwtBps": 10000,
+      "lowerBps": 10000,
+      "intent": 4,
+      "flags": 0,
+      "leaf": "0x4ec95919882629b433d170dbaf443ef1a5e6f91dfd1a5c9979c76e403a60b661",
+      "proof": {
+        "bitmap": "0xfd80000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x317a1427deb344892b5047b89477c46012a41cbce4513ffa860ea526f0838e58",
+          "0x2491d77fc1ac915a09ce569b0a1ea0f08b7c651f11459df746755142aefb03fa",
+          "0x83881b5c3c95f76b2ff4f581bbf5021276ed7171aef48feb6dcf34a74653ab7d",
+          "0x6ed58c765552a0319a8b4fe1b26888b76fec649b507524a66bd6e510239f86a4",
+          "0xfc5c108eaa8ba60dc820a82dd517fd5b87636528b3f37716335769d7d191f2c6",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "12uWceR53h4FiTha2LHa1r3R5jufL2XdqQ",
+      "key": "0x66f1ddc2ce98824bdea5e4078c017c9e13d1bf81d2359620ca4d0e23f08d2764",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 1000,
+      "lowerBps": 1000,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0xe643824b0730346297c06c9530f2e7fd24b1248cba4ee802ca08531f3bfce12a",
+      "proof": {
+        "bitmap": "0xf800000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xb9f6745bef2d006f19a2c02b7ca0da521a07e70fa9b52f964b9c4c4784736c27",
+          "0xdb000bf031777316f00a656ab187fa42d13201527a2d9a130d57dc7d521e4a75",
+          "0xcfa4811e4976f9173df1ae4fbb78b4a1da492f7dace091bbb44f7cc860e9ffe2",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "1E91ZXXMk6Mop5qdbJ7ythm6jiQAB1usN2",
+      "key": "0x8735b56ef47095376c31cccdd019d9554c9b3370542208bda2d2a4e10601a871",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 1000,
+      "lowerBps": 1000,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0x1b955ab7615c795c179dfaac40a23aa2d67db8944bb4a34bfd7f98d4524b1d8a",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x99994ce2fac697a81d1b90678340d5a6b53156fb7efdfd6d3e08ddf47c2b84b8",
+          "0xd8f4cf79e9895098cca9cbdd80e66b05b78b8f4ce884e9d031ebaa0902c50ed2",
+          "0x2d431bc57ea22739d28cdd0d61817e7211bbec8367253f0bd646b349839953ff",
+          "0xb38e3c1bf807d3c635bf04ebcde9b590accab0918cc5409b0c8a25ebe7f1d4df",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1JhmDEqhwzn4o1kPLcxp5f6x917nKzxPvv",
+      "key": "0xe06c3bd2e4aa2e2cf1734a5a352e4d49ef3395934c164a50f109b1f7fc821c8b",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 1000,
+      "lowerBps": 1000,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0x825850cc051ecd795eacefef7887f604a6df5caa361a5193890c3bfac8979f30",
+      "proof": {
+        "bitmap": "0xf900000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x5391cd31029b9b8acc5a6d9682fbf9e7fcd01fd7acb558172226fdb3569aeb9e",
+          "0xec0ff2d464217121cd99ddf9e8e543acc475e5c1385531c2a486d9b9ca425c32",
+          "0xc786a95186eb5407f7bccc436c706e87f5f338a846043d970b578bd50729665a",
+          "0x6e738896f2c43caec9936d518712740b4f46ccbca2c921815d5713ae0c650358",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1KNsUiHNsrx4UEXWvN9QTmStvTsDsfPQmX",
+      "key": "0xc2220c4be43c4271a25f0dccf14c5cf1da8ff135676fb88146fe28b0df4fe988",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 1000,
+      "lowerBps": 1000,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0x81803def3fa9478a24d8a8e2f5b1fb4c61dfb9f51da14cac42e19efb0e32f15f",
+      "proof": {
+        "bitmap": "0xfe00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xa19f451305c3795b326a947dd56c460b7aa842194deab9f718ae140b454f01b3",
+          "0xc7444624af3217fb2011919cacd5a39c0cbdcb3d962c4e0d9501c5227e64bcef",
+          "0xb599dfe5b70e43a34f62152b18c005322fe28dc7eb6a4d8d3b863e0e28a2a5ba",
+          "0x10fa9dd16ec3e4bcc2881d64251753eceb93add09e79f13e9a41f29d5c5ca535",
+          "0x71e65f67ac41b6e908670680a3d4cdfd58fec1bd345f09da19d95bee7075bf77",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1KbLDqeU7wK8rZtwvEd8Rw9kEkAW8JEd2H",
+      "key": "0xe863ae03c1fd0590f445d427997db7f66c49771eaa1dc98726daa78ce9684d25",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 1000,
+      "lowerBps": 1000,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0xd279d64ac3483e85021287bbc5d9463ad02eef9442893774b495f814cbde5b98",
+      "proof": {
+        "bitmap": "0xf980000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x736432e36644d101a5bf6935827aeee6d74bb57a2f2bb68d494dc8fe209f773a",
+          "0x0bb9b24713823efb55f95d831aee0b6e67a02f7295250adb882349ef539ab195",
+          "0xb8a1242e996bc3da5a06bfd6fea5b37c8a6e5e09298376e0c2f814b3df1deb8c",
+          "0xc786a95186eb5407f7bccc436c706e87f5f338a846043d970b578bd50729665a",
+          "0x6e738896f2c43caec9936d518712740b4f46ccbca2c921815d5713ae0c650358",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1GEUaj32X2P54VpRVkQ2o7yfoY3NfWEQf9",
+      "key": "0x6e48e86ab0e651bb01e0fd69505ce6a2063496c0aba888ca440feda2e5d2e852",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 2112,
+      "lowerBps": 2112,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0x4f22c4adf354a17f924732968b5ed027231586a83f097d6acc61fa5fea1776e9",
+      "proof": {
+        "bitmap": "0xf880000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x0f3caa69262e939d18c9966cf1fbd3daf02d7770c4cc2aebb748b5a2845675c0",
+          "0x8ad286de8c421327b8c77cd5bc57d950981ffdf5ac8599d11f8cf69386472972",
+          "0xdb000bf031777316f00a656ab187fa42d13201527a2d9a130d57dc7d521e4a75",
+          "0xcfa4811e4976f9173df1ae4fbb78b4a1da492f7dace091bbb44f7cc860e9ffe2",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "3MYocgZUtCrSsDMZh32idDGJubsvLWUxCx",
+      "key": "0xe8edaa3e73ff5e50b053a477753cdb80fdc1429af5b51e0b97320310dd32a371",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 2112,
+      "lowerBps": 2112,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0xe5f273c22761f03c2c3db576d4f50e6338d5264f792e75df878662c0a39b59a7",
+      "proof": {
+        "bitmap": "0xf980000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x50fc6b125575bdd46f310460c6b7aed433b31d7b323e8c1a40ec60afbb45df6f",
+          "0x0bb9b24713823efb55f95d831aee0b6e67a02f7295250adb882349ef539ab195",
+          "0xb8a1242e996bc3da5a06bfd6fea5b37c8a6e5e09298376e0c2f814b3df1deb8c",
+          "0xc786a95186eb5407f7bccc436c706e87f5f338a846043d970b578bd50729665a",
+          "0x6e738896f2c43caec9936d518712740b4f46ccbca2c921815d5713ae0c650358",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "1LvCNghzXBe5icMZUibiswEEqp8DiVXEqs",
+      "key": "0x75d455f5c90c2228e391efa56164b18de39785bbcc007a7436df129db4a0e531",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 3250,
+      "lowerBps": 3250,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0xb44ffec1ad42dd3ac8cb94d4692a486763d7e80a252f3105397cbd7d3a239fdf",
+      "proof": {
+        "bitmap": "0xfe00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x26da140ac4c3a0f9aafae7a17e16f3e1cbd5655e87dc267a8262bd9956605aa4",
+          "0xdc3bfa85e82b132e7fa141baca385330d3153f42b467e9139a141649ffe9c172",
+          "0x24490208af00ee357ee8f575d6f36d61b93f732f206002b893bc6b4f0d47ea47",
+          "0xf0aa750b1a9312475a891cbcddfadd0385023901b60cd9123b0409ce115e5460",
+          "0xcfa4811e4976f9173df1ae4fbb78b4a1da492f7dace091bbb44f7cc860e9ffe2",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "14D7ACwvgDVjnLEZau7BGfHZYXWBe1uXxi",
+      "key": "0x713e6e1ea7fb6cc6b9496236170bf5f5ef50bff357562be88bcd7b441f3ecae9",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 3250,
+      "lowerBps": 3250,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0x9318f52eda22115dfef28886e151625c423ec508ff3dcb492fbb3f53a88914da",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xa6bf8cb5da90bce5264d85ceb7a2d45214428f6716103c75f873cc5175695fac",
+          "0x24490208af00ee357ee8f575d6f36d61b93f732f206002b893bc6b4f0d47ea47",
+          "0xf0aa750b1a9312475a891cbcddfadd0385023901b60cd9123b0409ce115e5460",
+          "0xcfa4811e4976f9173df1ae4fbb78b4a1da492f7dace091bbb44f7cc860e9ffe2",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "15AS8fbVp4xDbcQHq4etxuu8so3hjMeek6",
+      "key": "0xc61b00239c21865cb154669ec2343f35858b2e655f09b8188705ff110ba85236",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 3250,
+      "lowerBps": 3250,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0x3424a6f103064432b130fdc87098d0b776b244049a81065647184ff5c9a16e01",
+      "proof": {
+        "bitmap": "0xfc00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0xc5eee8d9e68b98113515b3ef94fc48e0e6516551399113e228b44d690a4b1822",
+          "0xb599dfe5b70e43a34f62152b18c005322fe28dc7eb6a4d8d3b863e0e28a2a5ba",
+          "0x10fa9dd16ec3e4bcc2881d64251753eceb93add09e79f13e9a41f29d5c5ca535",
+          "0x71e65f67ac41b6e908670680a3d4cdfd58fec1bd345f09da19d95bee7075bf77",
+          "0x65c08e8ffe84a440fa26928ac4ab1d980cd485e390875144553b2c5e92245fd2",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    },
+    {
+      "address": "15k69XeJatZjiDAUbSP79Tb3PqTMwAUqzu",
+      "key": "0x53c013a9425bff87f698216e34e54f222669b9b57b4b99eddf90e1ccfab15330",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 3250,
+      "lowerBps": 3250,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0xdf454c2e48710cf34608ffa6eedddcf596f40f3088d7c8e409708e2122e78698",
+      "proof": {
+        "bitmap": "0xfe00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x1b016e9b8f34c7bb5065a3594978f9bc281ab13a3bc2588e38fcc5e11d602675",
+          "0xfbce24e35262997a8eead89114122de48bff33f601b2c8c12b06c1afeba28a34",
+          "0xaaccdbaf44ff9f395e6cc8f506ebdefa06319c9d5eef8f4db62a266cf685762b",
+          "0x769e9a1c1839cc8de13d026868e0c4e6c53ced7dfb203cc60c2d3f06d4d02c0f",
+          "0xc40764b1e786e1ddb52265ead1d623196db287ab6465057e8214bab1f1ca849d",
+          "0xc44edbb5c74b61da5d1451d7b7bbe43b47e3d09d6671100826cd9b25ea7ec92c",
+          "0x9f408f9bc912d7e8ba21501d58d5c9fff38bdacb39e5d4fc63c14e442aae248a"
+        ]
+      }
+    },
+    {
+      "address": "16Crfnu1oudYqd5APQbng6yn2pCJqCeEiJ",
+      "key": "0xab32a6084e8da43744bc0011a454bd7a668828b422e9ccda4eac88db253998bd",
+      "epoch": 2,
+      "band": 0,
+      "riskBps": 0,
+      "haircutBps": 5000,
+      "cwtBps": 3250,
+      "lowerBps": 3250,
+      "intent": 0,
+      "flags": 0,
+      "leaf": "0x7c623518aee177ef1bd19a2357ede47334f03825298eaa8d950e1a16b7905284",
+      "proof": {
+        "bitmap": "0xfd00000000000000000000000000000000000000000000000000000000000000",
+        "siblings": [
+          "0x12c70f537c6abd7f3e8e5e8634e8fd1f821f784a5acbabbf11e818a1068597d4",
+          "0x22243c8da3135a315413d5362fb6f5a2c3e431c865aa8fa5026eac05521440e4",
+          "0x6ed58c765552a0319a8b4fe1b26888b76fec649b507524a66bd6e510239f86a4",
+          "0xfc5c108eaa8ba60dc820a82dd517fd5b87636528b3f37716335769d7d191f2c6",
+          "0xfd9834b1a82e01c079953b2e07548b43eedcec8b8e1796618bea2b768e31b452",
+          "0x2ff95ff89f9bcb6b52afbf88ffc9d5b339a751cd6ec357f0463f0dda71075225",
+          "0xe2b3e4a2061f3e86542095d0d14dc0a9d74c6993651f9e628089d7f9042843ea"
+        ]
+      }
+    }
+  ],
+  "manifest": {
+    "spec": "SHARED_SPEC_v1",
+    "epoch": 2,
+    "root": "0x4c511d89cf96397e3b758e78354a27188133b4f1bf1a0dad80177c313388e585",
+    "leafCount": 60,
+    "apl_columns_missing": {},
+    "taint_loaded": true,
+    "agency_loaded": true,
+    "gatewayDemo": 12
+  },
+  "context": {
+    "18ooSDWytsT64KNxzJUvgm5ns4Q2JJZx4y": {
+      "nodeId": "wallet_18ooSDWytsT64KNxzJUvgm5ns4Q2JJZx4y",
+      "source": "alert",
+      "riskScore": 0.9601,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "driven primarily by wallet_first_sent_block (no single extreme value, broad pattern match); belongs to a cluster that is 73% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "1H91HHDt3bEgv3zHk1GqXYnkANJfjHLSZC": {
+      "nodeId": "wallet_1H91HHDt3bEgv3zHk1GqXYnkANJfjHLSZC",
+      "source": "alert",
+      "riskScore": 0.9384,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.6,
+      "reason": "wallet_fees_min is in the bottom 7% of all nodes (low)",
+      "geoTemporalReason": "claims CA, but 67% of activity falls in Japan business hours"
+    },
+    "1Lo45R8qkKDurPwtAU4wy6iyYYFpRPwhQa": {
+      "nodeId": "wallet_1Lo45R8qkKDurPwtAU4wy6iyYYFpRPwhQa",
+      "source": "alert",
+      "riskScore": 0.9187,
+      "intentLabel": "Sanctions-evasion-shaped",
+      "intentConfidence": 0.8,
+      "reason": "driven primarily by wallet_first_sent_block (no single extreme value, broad pattern match)",
+      "geoTemporalReason": "claims US, but 67% of activity falls in Japan business hours"
+    },
+    "3JUgPFWr3kMLrm1cauMcgcEMm6RZtLWnnM": {
+      "nodeId": "wallet_3JUgPFWr3kMLrm1cauMcgcEMm6RZtLWnnM",
+      "source": "alert",
+      "riskScore": 0.9174,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high); wallet_fees_min is in the top 6% of all nodes (high); wallet_fees_median is in the top 7% of all nodes (high); belongs to a cluster that is 73% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "3Q6vpPnVByYUibeDLUYMD2ExuMsErzYFxw": {
+      "nodeId": "wallet_3Q6vpPnVByYUibeDLUYMD2ExuMsErzYFxw",
+      "source": "alert",
+      "riskScore": 0.9159,
+      "intentLabel": "Pattern unclear",
+      "intentConfidence": 0.45,
+      "reason": "wallet_transacted_w_address_total is in the top 4% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "3NLyzZRyEMmwsASjT88NnYHotkCxkjw4oT": {
+      "nodeId": "wallet_3NLyzZRyEMmwsASjT88NnYHotkCxkjw4oT",
+      "source": "alert",
+      "riskScore": 0.9113,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_transacted_w_address_total is in the top 3% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1BBLwrZpbAvYX5HZbwxVFGMQL9vVQrMpxk": {
+      "nodeId": "wallet_1BBLwrZpbAvYX5HZbwxVFGMQL9vVQrMpxk",
+      "source": "alert",
+      "riskScore": 0.9042,
+      "intentLabel": "Sanctions-evasion-shaped",
+      "intentConfidence": 0.8,
+      "reason": "driven primarily by wallet_first_sent_block (no single extreme value, broad pattern match); belongs to a cluster that is 54% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "1FvtWwP3ePJDeR6K7ZePGujUuusUTds8Vy": {
+      "nodeId": "wallet_1FvtWwP3ePJDeR6K7ZePGujUuusUTds8Vy",
+      "source": "alert",
+      "riskScore": 0.9027,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high); wallet_fees_median is in the top 8% of all nodes (high); wallet_fees_max is in the top 1% of all nodes (high)",
+      "geoTemporalReason": "claims US, but 62% of activity falls in Japan business hours"
+    },
+    "3MbiUzrxs7tkpBZa57iCh3L2yvdCHTTDNf": {
+      "nodeId": "wallet_3MbiUzrxs7tkpBZa57iCh3L2yvdCHTTDNf",
+      "source": "alert",
+      "riskScore": 0.9024,
+      "intentLabel": "Pattern unclear",
+      "intentConfidence": 0.45,
+      "reason": "wallet_transacted_w_address_total is in the top 6% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "39sfuA8pY4UfybgEZi7uvA13jkGzZpsg5K": {
+      "nodeId": "wallet_39sfuA8pY4UfybgEZi7uvA13jkGzZpsg5K",
+      "source": "alert",
+      "riskScore": 0.8984,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "12k7kXAo7JjcHTnoPxpYsYQRVDAZaM4Jfq": {
+      "nodeId": "wallet_12k7kXAo7JjcHTnoPxpYsYQRVDAZaM4Jfq",
+      "source": "alert",
+      "riskScore": 0.8984,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 1.0,
+      "reason": "wallet_transacted_w_address_total is in the top 4% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1JpG4w6KTZjtPcdpMHWmKMgGYiaxakHwYg": {
+      "nodeId": "wallet_1JpG4w6KTZjtPcdpMHWmKMgGYiaxakHwYg",
+      "source": "alert",
+      "riskScore": 0.8968,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_first_block_appeared_in is in the bottom 3% of all nodes (low)",
+      "geoTemporalReason": "claims US, but 75% of activity falls in UK / West Africa business hours"
+    },
+    "3KNhjViXZm1pdc6nrUpyWTBThbYMUkpDbR": {
+      "nodeId": "wallet_3KNhjViXZm1pdc6nrUpyWTBThbYMUkpDbR",
+      "source": "alert",
+      "riskScore": 0.8946,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high); wallet_fees_min is in the top 8% of all nodes (high); wallet_fees_median is in the top 10% of all nodes (high); belongs to a cluster that is 73% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "1Niuz7qEPRZqrUwLPKKgMvYqUQKhoBupjX": {
+      "nodeId": "wallet_1Niuz7qEPRZqrUwLPKKgMvYqUQKhoBupjX",
+      "source": "alert",
+      "riskScore": 0.8932,
+      "intentLabel": "Pattern unclear",
+      "intentConfidence": 0.45,
+      "reason": "wallet_transacted_w_address_total is in the top 9% of all nodes (high); belongs to a cluster that is 52% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "141Zu4pHzkYZefE2audb1FU1gRkJ1TNKT6": {
+      "nodeId": "wallet_141Zu4pHzkYZefE2audb1FU1gRkJ1TNKT6",
+      "source": "alert",
+      "riskScore": 0.8895,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high); wallet_fees_max is in the top 5% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1QEZ1QbxFPuygDosjsn5qpmQU5yfxfhKiL": {
+      "nodeId": "wallet_1QEZ1QbxFPuygDosjsn5qpmQU5yfxfhKiL",
+      "source": "alert",
+      "riskScore": 0.8892,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_transacted_w_address_total is in the top 10% of all nodes (high); wallet_fees_max is in the top 7% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1GDYsY9M7Mg9SiF2D3vXAAAdDH8W3u27ku": {
+      "nodeId": "wallet_1GDYsY9M7Mg9SiF2D3vXAAAdDH8W3u27ku",
+      "source": "alert",
+      "riskScore": 0.887,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_transacted_w_address_total is in the top 7% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1KNd3pk9M2W2K92UVY7o1XxCypRseQfVam": {
+      "nodeId": "wallet_1KNd3pk9M2W2K92UVY7o1XxCypRseQfVam",
+      "source": "alert",
+      "riskScore": 0.8826,
+      "intentLabel": "Pattern unclear",
+      "intentConfidence": 0.35,
+      "reason": "wallet_fees_median is in the top 8% of all nodes (high); wallet_fees_max is in the top 9% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1GQSnzh9JRgipxC7btKvD3rBS8Zj8SVnAo": {
+      "nodeId": "wallet_1GQSnzh9JRgipxC7btKvD3rBS8Zj8SVnAo",
+      "source": "alert",
+      "riskScore": 0.8823,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high); wallet_fees_max is in the top 9% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "18mHiyfY9yaHq3WNb9dEFv7pjnpLfH7ZqP": {
+      "nodeId": "wallet_18mHiyfY9yaHq3WNb9dEFv7pjnpLfH7ZqP",
+      "source": "alert",
+      "riskScore": 0.8818,
+      "intentLabel": "Sanctions-evasion-shaped",
+      "intentConfidence": 1.0,
+      "reason": "wallet_first_block_appeared_in is in the bottom 9% of all nodes (low)",
+      "geoTemporalReason": null
+    },
+    "1AtHBEowGYvaDbjJuLKptijmpUaLjk2y2L": {
+      "nodeId": "wallet_1AtHBEowGYvaDbjJuLKptijmpUaLjk2y2L",
+      "source": "alert",
+      "riskScore": 0.8769,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.6,
+      "reason": "driven primarily by wallet_first_sent_block (no single extreme value, broad pattern match)",
+      "geoTemporalReason": "claims US, but 67% of activity falls in Russia / East Africa business hours"
+    },
+    "13va7xTm4HQ3NMQ7GVUPFfrdffUqy39Qsc": {
+      "nodeId": "wallet_13va7xTm4HQ3NMQ7GVUPFfrdffUqy39Qsc",
+      "source": "alert",
+      "riskScore": 0.8745,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 1.0,
+      "reason": "wallet_transacted_w_address_total is in the top 9% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "14hSZ6Ue2xZBQe6VfQgM9jAZmHV9n5Xdsy": {
+      "nodeId": "wallet_14hSZ6Ue2xZBQe6VfQgM9jAZmHV9n5Xdsy",
+      "source": "alert",
+      "riskScore": 0.8741,
+      "intentLabel": "Sanctions-evasion-shaped",
+      "intentConfidence": 0.8,
+      "reason": "driven primarily by wallet_first_sent_block (no single extreme value, broad pattern match)",
+      "geoTemporalReason": null
+    },
+    "39nz1urm6Vbkhzdu6FYedBys1Wzc3JFWbE": {
+      "nodeId": "wallet_39nz1urm6Vbkhzdu6FYedBys1Wzc3JFWbE",
+      "source": "alert",
+      "riskScore": 0.8713,
+      "intentLabel": "Sanctions-evasion-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high); wallet_fees_min is in the top 0% of all nodes (high); wallet_fees_median is in the top 0% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "14HUp1PY3At6mNVq5vDpUJmFUYVVDru5cW": {
+      "nodeId": "wallet_14HUp1PY3At6mNVq5vDpUJmFUYVVDru5cW",
+      "source": "alert",
+      "riskScore": 0.8688,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 1.0,
+      "reason": "wallet_transacted_w_address_total is in the top 6% of all nodes (high); belongs to a cluster that is 52% illicit-labeled among known members",
+      "geoTemporalReason": "claims SG, but 61% of activity falls in Western Europe business hours"
+    },
+    "18GJvbZ6uP6D3uvJp37GvMpuh7jgsmDtoE": {
+      "nodeId": "wallet_18GJvbZ6uP6D3uvJp37GvMpuh7jgsmDtoE",
+      "source": "alert",
+      "riskScore": 0.8681,
+      "intentLabel": "Pattern unclear",
+      "intentConfidence": 0.35,
+      "reason": "wallet_transacted_w_address_total is in the top 8% of all nodes (high); wallet_first_block_appeared_in is in the bottom 4% of all nodes (low)",
+      "geoTemporalReason": "claims US, but 56% of activity falls in Asia-Pacific business hours"
+    },
+    "1JUroxTMFPtP5EWaF6HtDtNXaFWM2psidc": {
+      "nodeId": "wallet_1JUroxTMFPtP5EWaF6HtDtNXaFWM2psidc",
+      "source": "alert",
+      "riskScore": 0.8674,
+      "intentLabel": "Pattern unclear",
+      "intentConfidence": 0.5,
+      "reason": "wallet_transacted_w_address_total is in the top 1% of all nodes (high); belongs to a cluster that is 100% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "1DYyueWpZriK9mdCKqUPiTKg3vaHYaPdCK": {
+      "nodeId": "wallet_1DYyueWpZriK9mdCKqUPiTKg3vaHYaPdCK",
+      "source": "alert",
+      "riskScore": 0.8665,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 1% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1DGjZ27wG9Rx5z4xEiCQpjzqvRVAJeMeX5": {
+      "nodeId": "wallet_1DGjZ27wG9Rx5z4xEiCQpjzqvRVAJeMeX5",
+      "source": "alert",
+      "riskScore": 0.8655,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.6,
+      "reason": "wallet_transacted_w_address_total is in the top 5% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1DgBV9TGcFML7XBrx92xYWY7krwKnqEx2c": {
+      "nodeId": "wallet_1DgBV9TGcFML7XBrx92xYWY7krwKnqEx2c",
+      "source": "alert",
+      "riskScore": 0.8643,
+      "intentLabel": "Sanctions-evasion-shaped",
+      "intentConfidence": 0.75,
+      "reason": "driven primarily by wallet_first_sent_block (no single extreme value, broad pattern match); belongs to a cluster that is 73% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "3D1gN3jhtppKxzDFJNd9LuzFzpj9Gue8cY": {
+      "nodeId": "wallet_3D1gN3jhtppKxzDFJNd9LuzFzpj9Gue8cY",
+      "source": "alert",
+      "riskScore": 0.8638,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high); wallet_fees_min is in the top 9% of all nodes (high); belongs to a cluster that is 51% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "12Vm7yZwr45D2ZTiA2w3eY5RTxTP1WNYpw": {
+      "nodeId": "wallet_12Vm7yZwr45D2ZTiA2w3eY5RTxTP1WNYpw",
+      "source": "alert",
+      "riskScore": 0.863,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 1% of all nodes (high); belongs to a cluster that is 52% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "38ussYSBjiwc6or1C2Ge6ywfMvAu1Luzpw": {
+      "nodeId": "wallet_38ussYSBjiwc6or1C2Ge6ywfMvAu1Luzpw",
+      "source": "alert",
+      "riskScore": 0.8574,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high); wallet_fees_min is in the top 6% of all nodes (high); wallet_fees_median is in the top 6% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1Kr7FVYjYUshCE8Df2dR14cBUGsdK3Jp1Y": {
+      "nodeId": "wallet_1Kr7FVYjYUshCE8Df2dR14cBUGsdK3Jp1Y",
+      "source": "alert",
+      "riskScore": 0.8573,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_transacted_w_address_total is in the top 10% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "1NkJ7Vnu4VGkorc4676ascCwbZpuq91Z4t": {
+      "nodeId": "wallet_1NkJ7Vnu4VGkorc4676ascCwbZpuq91Z4t",
+      "source": "alert",
+      "riskScore": 0.8552,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_transacted_w_address_total is in the top 9% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "397RUbx4FmrAgAZgfTvk92bZShDmwihGzZ": {
+      "nodeId": "wallet_397RUbx4FmrAgAZgfTvk92bZShDmwihGzZ",
+      "source": "alert",
+      "riskScore": 0.8547,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 0% of all nodes (high); belongs to a cluster that is 54% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "1MrpNxXTMnxizfeNs8Lr4N7AYf7Bu4P3ey": {
+      "nodeId": "wallet_1MrpNxXTMnxizfeNs8Lr4N7AYf7Bu4P3ey",
+      "source": "alert",
+      "riskScore": 0.8527,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "wallet_transacted_w_address_total is in the top 3% of all nodes (high); belongs to a cluster that is 52% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "1EwX3e6PRHGn3EUXoarmjaxzuFjfnfb6hx": {
+      "nodeId": "wallet_1EwX3e6PRHGn3EUXoarmjaxzuFjfnfb6hx",
+      "source": "alert",
+      "riskScore": 0.8522,
+      "intentLabel": "Sanctions-evasion-shaped",
+      "intentConfidence": 0.75,
+      "reason": "driven primarily by wallet_first_sent_block (no single extreme value, broad pattern match); belongs to a cluster that is 73% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "12ccSQ7vJZTXgQRkyVwTQGhFKaiqK14uAw": {
+      "nodeId": "wallet_12ccSQ7vJZTXgQRkyVwTQGhFKaiqK14uAw",
+      "source": "alert",
+      "riskScore": 0.85,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 7% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "16xidiRi59WLN3GoHWAPnpFTq3PoMWxURV": {
+      "nodeId": "wallet_16xidiRi59WLN3GoHWAPnpFTq3PoMWxURV",
+      "source": "alert",
+      "riskScore": 0.8499,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_first_block_appeared_in is in the bottom 4% of all nodes (low)",
+      "geoTemporalReason": "claims CA, but 75% of activity falls in Asia-Pacific business hours"
+    },
+    "1K5KTHhEB9Mcida1xSehtYLjyGf7QYncZx": {
+      "nodeId": "wallet_1K5KTHhEB9Mcida1xSehtYLjyGf7QYncZx",
+      "source": "alert",
+      "riskScore": 0.8495,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 1.0,
+      "reason": "wallet_transacted_w_address_total is in the top 9% of all nodes (high)",
+      "geoTemporalReason": "claims US, but 56% of activity falls in Japan business hours"
+    },
+    "18mKBWckBim8qSDre1e6YQjxNN8KkCJfVU": {
+      "nodeId": "wallet_18mKBWckBim8qSDre1e6YQjxNN8KkCJfVU",
+      "source": "alert",
+      "riskScore": 0.8486,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.6,
+      "reason": "wallet_first_sent_block is in the top 9% of all nodes (high)",
+      "geoTemporalReason": "claims AU, but 100% of activity falls in North America business hours"
+    },
+    "1Gz4RywfgHejkZ7A5RdtBRVGcjadSrrjiG": {
+      "nodeId": "wallet_1Gz4RywfgHejkZ7A5RdtBRVGcjadSrrjiG",
+      "source": "alert",
+      "riskScore": 0.8468,
+      "intentLabel": "Darknet-market-shaped",
+      "intentConfidence": 0.75,
+      "reason": "driven primarily by wallet_first_sent_block (no single extreme value, broad pattern match)",
+      "geoTemporalReason": null
+    },
+    "3CZtrcD8W3ut85Me7km2HgLyrnGQ5GrXbE": {
+      "nodeId": "wallet_3CZtrcD8W3ut85Me7km2HgLyrnGQ5GrXbE",
+      "source": "alert",
+      "riskScore": 0.8457,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 1% of all nodes (high); belongs to a cluster that is 73% illicit-labeled among known members",
+      "geoTemporalReason": null
+    },
+    "1taKuQAcYTP8VUbxsGu4Byi38xsay952v": {
+      "nodeId": "wallet_1taKuQAcYTP8VUbxsGu4Byi38xsay952v",
+      "source": "alert",
+      "riskScore": 0.8446,
+      "intentLabel": "Sanctions-evasion-shaped",
+      "intentConfidence": 0.8,
+      "reason": "driven primarily by wallet_first_sent_block (no single extreme value, broad pattern match)",
+      "geoTemporalReason": "claims US, but 67% of activity falls in Australia business hours"
+    },
+    "144fuZHP6PvKiPYYNFVVpHuc6o3KxhoEoc": {
+      "nodeId": "wallet_144fuZHP6PvKiPYYNFVVpHuc6o3KxhoEoc",
+      "source": "alert",
+      "riskScore": 0.8446,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_fees_min is in the bottom 3% of all nodes (low)",
+      "geoTemporalReason": null
+    },
+    "1Hmm1KKPDUnwzZjRLSRPtVtTYe2KrEE4U3": {
+      "nodeId": "wallet_1Hmm1KKPDUnwzZjRLSRPtVtTYe2KrEE4U3",
+      "source": "alert",
+      "riskScore": 0.8434,
+      "intentLabel": "Ransomware-shaped",
+      "intentConfidence": 0.65,
+      "reason": "wallet_transacted_w_address_total is in the top 4% of all nodes (high); wallet_fees_max is in the top 7% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "13PTX5TUaGvPPZ5j1ushpDzeFqwVCzkwXg": {
+      "nodeId": "wallet_13PTX5TUaGvPPZ5j1ushpDzeFqwVCzkwXg",
+      "source": "alert",
+      "riskScore": 0.8429,
+      "intentLabel": "Pattern unclear",
+      "intentConfidence": 0.45,
+      "reason": "wallet_transacted_w_address_total is in the top 1% of all nodes (high)",
+      "geoTemporalReason": null
+    },
+    "12uWceR53h4FiTha2LHa1r3R5jufL2XdqQ": {
+      "nodeId": "wallet_12uWceR53h4FiTha2LHa1r3R5jufL2XdqQ",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "1E91ZXXMk6Mop5qdbJ7ythm6jiQAB1usN2": {
+      "nodeId": "wallet_1E91ZXXMk6Mop5qdbJ7ythm6jiQAB1usN2",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "1JhmDEqhwzn4o1kPLcxp5f6x917nKzxPvv": {
+      "nodeId": "wallet_1JhmDEqhwzn4o1kPLcxp5f6x917nKzxPvv",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "1KNsUiHNsrx4UEXWvN9QTmStvTsDsfPQmX": {
+      "nodeId": "wallet_1KNsUiHNsrx4UEXWvN9QTmStvTsDsfPQmX",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "1KbLDqeU7wK8rZtwvEd8Rw9kEkAW8JEd2H": {
+      "nodeId": "wallet_1KbLDqeU7wK8rZtwvEd8Rw9kEkAW8JEd2H",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "1GEUaj32X2P54VpRVkQ2o7yfoY3NfWEQf9": {
+      "nodeId": "wallet_1GEUaj32X2P54VpRVkQ2o7yfoY3NfWEQf9",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "3MYocgZUtCrSsDMZh32idDGJubsvLWUxCx": {
+      "nodeId": "wallet_3MYocgZUtCrSsDMZh32idDGJubsvLWUxCx",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "1LvCNghzXBe5icMZUibiswEEqp8DiVXEqs": {
+      "nodeId": "wallet_1LvCNghzXBe5icMZUibiswEEqp8DiVXEqs",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "14D7ACwvgDVjnLEZau7BGfHZYXWBe1uXxi": {
+      "nodeId": "wallet_14D7ACwvgDVjnLEZau7BGfHZYXWBe1uXxi",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "15AS8fbVp4xDbcQHq4etxuu8so3hjMeek6": {
+      "nodeId": "wallet_15AS8fbVp4xDbcQHq4etxuu8so3hjMeek6",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "15k69XeJatZjiDAUbSP79Tb3PqTMwAUqzu": {
+      "nodeId": "wallet_15k69XeJatZjiDAUbSP79Tb3PqTMwAUqzu",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    },
+    "16Crfnu1oudYqd5APQbng6yn2pCJqCeEiJ": {
+      "nodeId": "wallet_16Crfnu1oudYqd5APQbng6yn2pCJqCeEiJ",
+      "source": "gateway",
+      "riskScore": null,
+      "intentLabel": null,
+      "intentConfidence": null,
+      "reason": "Not a ranked alert: haircut taint trips the hold line while custody-weighted taint clears it.",
+      "geoTemporalReason": null
+    }
+  }
+}
