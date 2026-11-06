@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ChainTrace — full pipeline runner (Linux/macOS/git-bash).
 #
-# Runs, in order: Person A's data pipeline -> Person B's graph+ML pipeline -> the dashboard.
+# Runs, in order: data pipeline -> graph+ML pipeline -> provenance layer -> the console.
 # Stops with a clear message (and does NOT launch the dashboard) if either pipeline fails,
 # instead of silently falling through to an empty/broken dashboard.
 #
@@ -36,7 +36,7 @@ if [[ -n "$SAMPLE_TIMESTEPS" ]]; then
 fi
 
 echo ""
-echo "[1/3] Person A: data pipeline -> data/processed/unified_dataset.csv"
+echo "[1/4] Data pipeline -> data/processed/unified_dataset.csv"
 if [[ -n "$SAMPLE_TIMESTEPS" ]]; then
     "$PYTHON" -u -c "from src.data_pipeline.pipeline import main; main(sample_timesteps=$SAMPLE_TIMESTEPS)"
 else
@@ -45,13 +45,13 @@ fi
 STATUS=$?
 if [[ $STATUS -ne 0 ]]; then
     echo ""
-    echo "XXX Data pipeline failed (exit $STATUS). Stopping before the dashboard launch."
+    echo "XXX Data pipeline failed (exit $STATUS). Stopping before the console starts."
     echo "$MISSING_DATA_HELP"
     exit 1
 fi
 
 echo ""
-echo "[2/3] Person B: graph+ML pipeline -> outputs/alerts/ranked_alerts.csv"
+echo "[2/4] Graph+ML pipeline -> outputs/alerts/ranked_alerts.csv"
 if [[ -n "$SAMPLE_TIMESTEPS" ]]; then
     "$PYTHON" -u -m src.graph_ml.run_phase2 --sample-timesteps "$SAMPLE_TIMESTEPS" --save
 else
@@ -60,13 +60,17 @@ fi
 STATUS=$?
 if [[ $STATUS -ne 0 ]]; then
     echo ""
-    echo "XXX Graph+ML pipeline failed (exit $STATUS). Stopping before the dashboard launch."
+    echo "XXX Graph+ML pipeline failed (exit $STATUS). Stopping before the console starts."
     echo "$MISSING_DATA_HELP"
     exit 1
 fi
 
 echo ""
-echo "[3/3] Launching dashboard -> streamlit run app.py"
-echo "(both outputs above already sit at their default paths, so the dashboard should"
-echo " auto-load them with no manual upload needed)"
-exec "$PYTHON" -m streamlit run app.py
+echo "[3/4] Provenance layer -> data/processed/adversarial_provenance/"
+if ! "$PYTHON" -u -m src.adversarial_provenance.pipeline || ! "$PYTHON" -u -m src.adversarial_provenance.pipeline_b; then
+    echo "!!! Provenance layer failed. The console still starts; its Provenance pages will say the layer is not built."
+fi
+
+echo ""
+echo "[4/4] Starting the console -> http://127.0.0.1:${PORT:-5000}/app/"
+exec "$PYTHON" -m src.webapp.server

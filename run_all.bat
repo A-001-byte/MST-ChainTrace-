@@ -1,7 +1,7 @@
 @echo off
 REM ChainTrace -- full pipeline runner (Windows).
 REM
-REM Runs, in order: Person A's data pipeline -> Person B's graph+ML pipeline -> the dashboard.
+REM Runs, in order: data pipeline -> graph+ML pipeline -> provenance layer -> the console.
 REM Stops with a clear message (and does NOT launch the dashboard) if either pipeline fails,
 REM instead of silently falling through to an empty/broken dashboard.
 REM
@@ -23,7 +23,7 @@ echo === ChainTrace: full pipeline run ===
 if not "%SAMPLE_TIMESTEPS%"=="" echo (subsampled to the first %SAMPLE_TIMESTEPS% time steps)
 
 echo.
-echo [1/3] Person A: data pipeline -^> data\processed\unified_dataset.csv
+echo [1/4] Data pipeline -^> data\processed\unified_dataset.csv
 if not "%SAMPLE_TIMESTEPS%"=="" (
     %PYTHON% -u -c "from src.data_pipeline.pipeline import main; main(sample_timesteps=%SAMPLE_TIMESTEPS%)"
 ) else (
@@ -31,13 +31,13 @@ if not "%SAMPLE_TIMESTEPS%"=="" (
 )
 if errorlevel 1 (
     echo.
-    echo XXX Data pipeline failed. Stopping before the dashboard launch.
+    echo XXX Data pipeline failed. Stopping before the console starts.
     call :missing_data_help
     exit /b 1
 )
 
 echo.
-echo [2/3] Person B: graph+ML pipeline -^> outputs\alerts\ranked_alerts.csv
+echo [2/4] Graph+ML pipeline -^> outputs\alerts\ranked_alerts.csv
 if not "%SAMPLE_TIMESTEPS%"=="" (
     %PYTHON% -u -m src.graph_ml.run_phase2 --sample-timesteps %SAMPLE_TIMESTEPS% --save
 ) else (
@@ -45,16 +45,19 @@ if not "%SAMPLE_TIMESTEPS%"=="" (
 )
 if errorlevel 1 (
     echo.
-    echo XXX Graph+ML pipeline failed. Stopping before the dashboard launch.
+    echo XXX Graph+ML pipeline failed. Stopping before the console starts.
     call :missing_data_help
     exit /b 1
 )
 
 echo.
-echo [3/3] Launching dashboard -^> streamlit run app.py
-echo (both outputs above already sit at their default paths, so the dashboard should
-echo  auto-load them with no manual upload needed)
-%PYTHON% -m streamlit run app.py
+echo [3/4] Provenance layer -^> data\processeddversarial_provenance%PYTHON% -u -m src.adversarial_provenance.pipeline && %PYTHON% -u -m src.adversarial_provenance.pipeline_b
+if errorlevel 1 echo !!! Provenance layer failed. The console still starts; its Provenance pages will say the layer is not built.
+
+echo.
+if "%PORT%"=="" (set "SHOWPORT=5000") else (set "SHOWPORT=%PORT%")
+echo [4/4] Starting the console -^> http://127.0.0.1:!SHOWPORT!/app/
+%PYTHON% -m src.webapp.server
 goto :eof
 
 :missing_data_help
