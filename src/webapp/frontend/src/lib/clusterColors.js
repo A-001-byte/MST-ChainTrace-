@@ -1,13 +1,13 @@
-// Cluster ids are nominal labels, never a status. On the light canvas they take a
-// violet-to-slate ramp: separable against white, and clearly distinct from the
-// red/green that carry risk meaning.
-const RAMP = ["#7132f5", "#2e3350", "#686b82", "#4f24ad", "#484b5e", "#9497a9", "#202333"];
+// Cluster ids are nominal labels, never a status. On the dark canvas they take a cool/warm
+// spectral ramp — ion, ultraviolet, ember, orchid, sky, sand, teal — all separable against
+// the void and deliberately clear of the crimson/mint that carry risk meaning.
+const RAMP = ["#58e1ff", "#8f7bff", "#ff8a2a", "#d77bff", "#6fa8ff", "#e8d27a", "#3fc6c0"];
 
-/** Stable tone for a cluster id; hairline grey for unclustered / context. */
+/** Stable tone for a cluster id; muted slate for unclustered / context. */
 export function clusterColor(clusterId) {
-  if (clusterId === null || clusterId === undefined) return "#d4d4dc";
+  if (clusterId === null || clusterId === undefined) return "#3a4a68";
   const n = Number(clusterId);
-  if (Number.isNaN(n)) return "#d4d4dc";
+  if (Number.isNaN(n)) return "#3a4a68";
   // spread ids across the ramp with a multiplicative hash so adjacent ids differ
   return RAMP[((n * 7) + (n >> 3)) % RAMP.length];
 }

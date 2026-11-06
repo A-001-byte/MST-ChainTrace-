@@ -1,4 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { animate, useReducedMotion } from "motion/react";
 import { feature } from "topojson-client";
 import landTopo from "world-atlas/land-110m.json";
@@ -6,206 +12,381 @@ import { centroidFor, jitterFor } from "../../lib/countryCentroids";
 import { activityBandFrom, bandLonRange } from "../../lib/regionAnchors";
 import { CHART_COLORS as C } from "../../lib/chartColors";
 
-const W = 1000, H = 500;
-const K_MIN = 1, K_MAX = 9;
-const FONT = "Inter, system-ui, sans-serif";
+const DEG = Math.PI / 180;
+const R = 1;
+const DIST_MIN = 1.7, DIST_MAX = 6, DIST_HOME = 3.9;
+// jitterFor() works in pixels of the old 1000×500 equirectangular map; converted to degrees here
+const OLD_W = 1000, OLD_H = 500, JITTER_PX = 11;
+const ION = new THREE.Color(C.VIOLET), EMBER = new THREE.Color(C.EMBER);
 
-const project = (lon, lat) => [((lon + 180) / 360) * W, ((90 - lat) / 180) * H];
-
-function ringsToPath(coordinates) {
-  let d = "";
-  for (const polygon of coordinates) for (const ring of polygon) {
-    ring.forEach(([lon, lat], i) => { const [x, y] = project(lon, lat); d += `${i ? "L" : "M"}${x.toFixed(1)},${y.toFixed(1)}`; });
-    d += "Z";
-  }
-  return d;
+/** lat/lon -> point on the sphere. Matches SphereGeometry's own phi/theta layout. */
+function toVec(lat, lon, r = R) {
+  const phi = (90 - lat) * DEG, theta = (lon + 180) * DEG;
+  return new THREE.Vector3(-r * Math.sin(phi) * Math.cos(theta), r * Math.cos(phi), r * Math.sin(phi) * Math.sin(theta));
 }
 
-/** Quadratic arc between two projected points, bowed toward the pole. */
-function arcPath([x1, y1], [x2, y2]) {
-  const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
-  const dx = x2 - x1, dy = y2 - y1;
-  const len = Math.hypot(dx, dy) || 1;
-  const lift = Math.min(90, len * 0.28);
-  return `M${x1},${y1} Q${mx - (dy / len) * lift},${my + (dx / len) * lift} ${x2},${y2}`;
+let dotTex = null;
+function dot() {
+  if (dotTex) return dotTex;
+  const c = document.createElement("canvas"); c.width = c.height = 64;
+  const g = c.getContext("2d");
+  const r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+  r.addColorStop(0, "rgba(255,255,255,1)"); r.addColorStop(0.3, "rgba(255,255,255,0.5)"); r.addColorStop(1, "rgba(255,255,255,0)");
+  g.fillStyle = r; g.fillRect(0, 0, 64, 64);
+  dotTex = new THREE.CanvasTexture(c);
+  return dotTex;
+}
+
+/** Land as a field of dots: rasterise the land polygons, then keep the sphere points that land on ink. */
+function landDots() {
+  const W = 1024, H = 512;
+  const c = document.createElement("canvas"); c.width = W; c.height = H;
+  const g = c.getContext("2d", { willReadFrequently: true });
+  const geo = feature(landTopo, landTopo.objects.land);
+  const geoms = geo.type === "FeatureCollection" ? geo.features.map((f) => f.geometry) : [geo.geometry];
+  g.fillStyle = "#fff";
+  for (const gm of geoms) {
+    const polys = gm.type === "MultiPolygon" ? gm.coordinates : [gm.coordinates];
+    for (const poly of polys) {
+      g.beginPath();
+      for (const ring of poly) ring.forEach(([lon, lat], i) => { const x = ((lon + 180) / 360) * W, y = ((90 - lat) / 180) * H; if (i) g.lineTo(x, y); else g.moveTo(x, y); });
+      g.fill("evenodd");
+    }
+  }
+  const px = g.getImageData(0, 0, W, H).data;
+  const pts = [];
+  const N = 22000, golden = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < N; i++) {
+    const y = 1 - (i / (N - 1)) * 2, rad = Math.sqrt(1 - y * y), th = golden * i;
+    const lat = Math.asin(y) / DEG;
+    const lon = ((Math.atan2(Math.sin(th) * rad, Math.cos(th) * rad) / DEG) + 540) % 360 - 180;
+    const x = Math.min(W - 1, Math.floor(((lon + 180) / 360) * W)), yy = Math.min(H - 1, Math.floor(((90 - lat) / 180) * H));
+    if (px[(yy * W + x) * 4] > 128) pts.push(toVec(lat, lon, R * 1.002));
+  }
+  return new THREE.BufferGeometry().setFromPoints(pts);
+}
+
+/** Arc from the claimed country up and over to the activity band's anchor. */
+function arcCurve(a, b) {
+  const lift = R + 0.12 + a.angleTo(b) * 0.32;
+  const c1 = a.clone().lerp(b, 0.25).normalize().multiplyScalar(lift);
+  const c2 = a.clone().lerp(b, 0.75).normalize().multiplyScalar(lift);
+  return new THREE.CubicBezierCurve3(a, c1, c2, b);
 }
 
 /**
- * Interactive country-centroid map on the light canvas.
+ * Interactive globe of flagged wallets by CLAIMED country.
  *
- * One view state {k, tx, ty} drives EVERYTHING — the group transform, dot radii, stroke
- * widths and font sizes are all computed from the same tweened k, so nothing pops while a
- * focus animation is in flight. Wheel = zoom about cursor, drag = pan, selecting a wallet
- * animates a focus, double-click resets.
+ * Same logic as the flat map it replaced: each wallet sits at its claimed country's centroid,
+ * deterministically jittered; an arc runs to the timezone band the detector says its activity
+ * actually fits; selecting a wallet shades that band and frames both ends. Drag orbits, wheel
+ * zooms, double-click resets. The globe drifts until touched; reduced motion stills it.
  */
 export default function GeoTemporalMap({ points, selectedId, onSelect }) {
   const rm = useReducedMotion();
-  const svgRef = useRef(null);
-  const [view, setView] = useState({ k: 1, tx: 0, ty: 0 });
-  const [dragging, setDragging] = useState(false);
-  // Latest view for handlers that need a starting point (focus tween). Synced in an
-  // effect, never assigned during render.
-  const viewRef = useRef(view);
-  useEffect(() => { viewRef.current = view; }, [view]);
-  const drag = useRef(null);
-  const anim = useRef(null);
-
-  const landPath = useMemo(() => {
-    const geo = feature(landTopo, landTopo.objects.land);
-    const geoms = geo.type === "FeatureCollection" ? geo.features.map((f) => f.geometry) : [geo.geometry];
-    return geoms.map((g) => (g.type === "MultiPolygon" ? ringsToPath(g.coordinates) : ringsToPath([g.coordinates]))).join("");
-  }, []);
+  const wrapRef = useRef(null);
+  const sceneRef = useRef(null);
+  const labelRefs = useRef(new Map());
+  const [hover, setHover] = useState(null);
+  const selectRef = useRef(onSelect);
+  useEffect(() => { selectRef.current = onSelect; }, [onSelect]);
 
   const plotted = useMemo(() => (points ?? []).map((p) => {
     const c = centroidFor(p.claimedCountry);
     if (!c) return null;
-    const [x, y] = project(c.lon, c.lat);
-    const { dx, dy } = jitterFor(p.nodeId, 11);
+    const { dx, dy } = jitterFor(p.nodeId, JITTER_PX);
+    const lat = c.lat - dy * (180 / OLD_H), lon = c.lon + dx * (360 / OLD_W);
     const band = activityBandFrom(p.reason);
-    const bandXY = band ? project(band.lon, band.lat) : null;
-    return { ...p, x: x + dx, y: y + dy, cx: x, cy: y, countryName: c.name, band, bandXY };
+    return { ...p, lat, lon, countryName: c.name, band };
   }).filter(Boolean), [points]);
 
   const byCountry = useMemo(() => {
     const m = new Map();
-    for (const p of plotted) { const e = m.get(p.claimedCountry) ?? { code: p.claimedCountry, x: p.cx, y: p.cy, n: 0 }; e.n += 1; m.set(p.claimedCountry, e); }
+    for (const p of plotted) {
+      const c = centroidFor(p.claimedCountry);
+      const e = m.get(p.claimedCountry) ?? { code: p.claimedCountry, lat: c.lat, lon: c.lon, n: 0 };
+      e.n += 1; m.set(p.claimedCountry, e);
+    }
     return [...m.values()];
   }, [plotted]);
 
   const selected = plotted.find((p) => p.nodeId === selectedId) ?? null;
 
-  // --- focus animation: tween the whole view as one object -----------------------
-  const goTo = (target) => {
+  // --- build the scene once per data set -----------------------------------------------
+  useEffect(() => {
+    const el = wrapRef.current;
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    el.prepend(renderer.domElement);
+    renderer.domElement.style.display = "block";
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.01, 50);
+    camera.position.copy(toVec(32, -35, DIST_HOME));   // Atlantic: claims (Americas) and bands (Europe/Asia) both in view
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enablePan = false; controls.enableDamping = true; controls.dampingFactor = 0.08;
+    controls.rotateSpeed = 0.5; controls.zoomSpeed = 0.7;
+    controls.minDistance = DIST_MIN; controls.maxDistance = DIST_MAX;
+    controls.autoRotate = !rm; controls.autoRotateSpeed = 0.35;
+
+    // body, atmosphere, land, graticule
+    scene.add(new THREE.Mesh(new THREE.SphereGeometry(R * 0.995, 64, 64), new THREE.MeshBasicMaterial({ color: 0x050c1a })));
+    scene.add(new THREE.Mesh(new THREE.SphereGeometry(R * 1.14, 64, 64), new THREE.ShaderMaterial({
+      side: THREE.BackSide, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false,
+      vertexShader: "varying vec3 vN; void main(){ vN = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }",
+      fragmentShader: "varying vec3 vN; void main(){ float i = pow(0.68 - dot(vN, vec3(0.0,0.0,1.0)), 3.2); gl_FragColor = vec4(0.35,0.85,1.0,1.0) * i; }",
+    })));
+    scene.add(new THREE.Points(landDots(), new THREE.PointsMaterial({ color: 0x6fb2ff, size: 0.018, map: dot(), transparent: true, opacity: 1, depthWrite: false })));
+    const gratMat = new THREE.LineBasicMaterial({ color: 0x15355a, transparent: true, opacity: 0.55 });
+    for (let lon = -180; lon < 180; lon += 30) {
+      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(Array.from({ length: 61 }, (_, i) => toVec(-90 + i * 3, lon, R * 1.001))), gratMat));
+    }
+    for (const lat of [-60, -30, 0, 30, 60]) {
+      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(Array.from({ length: 121 }, (_, i) => toVec(lat, -180 + i * 3, R * 1.001))), gratMat));
+    }
+
+    // wallets: spike + glowing head + an invisible, generous hit sphere
+    const wallets = new Map();
+    const hits = [];
+    const glow = dot();
+    for (const p of plotted) {
+      const base = toVec(p.lat, p.lon, R);
+      const tip = toVec(p.lat, p.lon, R * 1.07);
+      const spikeMat = new THREE.LineBasicMaterial({ color: ION, transparent: true, opacity: 0.85 });
+      const spike = new THREE.Line(new THREE.BufferGeometry().setFromPoints([base, tip]), spikeMat);
+      const headMat = new THREE.SpriteMaterial({ map: glow, color: ION, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
+      const head = new THREE.Sprite(headMat); head.position.copy(tip); head.scale.setScalar(0.05);
+      const hit = new THREE.Mesh(new THREE.SphereGeometry(0.035, 8, 8), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+      hit.position.copy(tip); hit.userData.nodeId = p.nodeId;
+      scene.add(spike, head, hit); hits.push(hit);
+
+      let arc = null;
+      if (p.band) {
+        const curve = arcCurve(base, toVec(p.band.lat, p.band.lon, R));
+        const pts = curve.getPoints(80);
+        const cols = new Float32Array(pts.length * 3);
+        pts.forEach((_, i) => { const c = ION.clone().lerp(EMBER, i / (pts.length - 1)); cols.set([c.r, c.g, c.b], i * 3); });
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        geo.setAttribute("color", new THREE.BufferAttribute(cols, 3));
+        const lineMat = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.45 });
+        const pulseMat = new THREE.SpriteMaterial({ map: glow, color: 0xffffff, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
+        const pulse = new THREE.Sprite(pulseMat); pulse.scale.setScalar(0.045);
+        scene.add(new THREE.Line(geo, lineMat), pulse);
+        arc = { curve, lineMat, pulse, pulseMat, phase: Math.random() };
+      }
+      wallets.set(p.nodeId, { p, base, spikeMat, headMat, head, arc });
+    }
+
+    // selection furniture: the shaded timezone band, its anchor, and a ping on the wallet
+    const band = new THREE.Mesh(new THREE.SphereGeometry(R * 1.004, 24, 48, 0, 15 * DEG),
+      new THREE.MeshBasicMaterial({ color: EMBER, transparent: true, opacity: 0.1, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false }));
+    const bandEdgeMat = new THREE.LineBasicMaterial({ color: EMBER, transparent: true, opacity: 0.7 });
+    const bandEdges = new THREE.Group();
+    const anchor = new THREE.Mesh(new THREE.RingGeometry(0.018, 0.026, 40), new THREE.MeshBasicMaterial({ color: EMBER, side: THREE.DoubleSide, transparent: true }));
+    const ping = new THREE.Mesh(new THREE.RingGeometry(0.02, 0.026, 40), new THREE.MeshBasicMaterial({ color: ION, side: THREE.DoubleSide, transparent: true }));
+    band.visible = bandEdges.visible = anchor.visible = ping.visible = false;
+    scene.add(band, bandEdges, anchor, ping);
+
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    composer.addPass(new UnrealBloomPass(new THREE.Vector2(1, 1), 0.7, 0.45, 0.35));
+    composer.addPass(new OutputPass());
+
+    const size = () => {
+      const { width, height } = el.getBoundingClientRect();
+      renderer.setSize(width, height); composer.setSize(width, height);
+      camera.aspect = width / Math.max(1, height); camera.updateProjectionMatrix();
+    };
+    const ro = new ResizeObserver(size); ro.observe(el); size();
+
+    // labels are plain DOM, moved each frame, faded out on the far side of the globe
+    const tmp = new THREE.Vector3();
+    const placeLabel = (node, v) => {
+      if (!node) return;
+      if (!v) { node.style.opacity = "0"; return; }
+      const facing = v.clone().normalize().dot(camera.position.clone().normalize());
+      tmp.copy(v).project(camera);
+      node.style.transform = `translate(${((tmp.x + 1) / 2) * el.clientWidth + 10}px, ${((1 - tmp.y) / 2) * el.clientHeight - 10}px)`;
+      node.style.opacity = facing > 0.2 ? String(Math.min(1, (facing - 0.2) * 4) * (node.dataset.dim === "1" ? 0.3 : 1)) : "0";
+    };
+
+    let raf = 0;
+    const clock = new THREE.Clock();
+    const frame = () => {
+      const t = clock.getElapsedTime();
+      controls.update();
+      for (const w of wallets.values()) {
+        if (w.arc) w.arc.pulse.position.copy(w.arc.curve.getPoint(rm ? 0.5 : (t * 0.28 + w.arc.phase) % 1));
+      }
+      if (ping.visible && !rm) {
+        const u = (t * 1.4) % 1;
+        ping.scale.setScalar(1 + u * 2.4); ping.material.opacity = 1 - u;
+      }
+      for (const c of byCountry) placeLabel(labelRefs.current.get(c.code), toVec(c.lat, c.lon, R * 1.02));
+      placeLabel(labelRefs.current.get("__band"), sceneRef.current?.bandLabelAt);
+      composer.render();
+      raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
+
+    // picking: a click is a pointer that barely moved
+    const ray = new THREE.Raycaster(); const ndc = new THREE.Vector2();
+    const cv = renderer.domElement;
+    const pick = (e) => {
+      const r = cv.getBoundingClientRect();
+      ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+      ray.setFromCamera(ndc, camera);
+      const hit = ray.intersectObjects(hits, false)[0];
+      // ignore wallets on the far side of the globe
+      if (!hit || hit.object.position.clone().normalize().dot(camera.position.clone().normalize()) < 0.1) return null;
+      return hit.object.userData.nodeId;
+    };
+    let down = null;
+    const onDown = (e) => { down = { x: e.clientX, y: e.clientY }; controls.autoRotate = false; };
+    const onUp = (e) => {
+      if (down && Math.hypot(e.clientX - down.x, e.clientY - down.y) < 5) {
+        const id = pick(e);
+        if (id) selectRef.current?.(id === sceneRef.current?.selectedId ? null : id);
+      }
+      down = null;
+    };
+    const onMove = (e) => {
+      const id = pick(e);
+      cv.style.cursor = id ? "pointer" : "grab";
+      const r = el.getBoundingClientRect();
+      setHover((h) => (id ? { id, x: e.clientX - r.left, y: e.clientY - r.top, w: r.width } : h ? null : h));
+    };
+    const onLeave = () => setHover(null);
+    cv.addEventListener("pointerdown", onDown); cv.addEventListener("pointerup", onUp);
+    cv.addEventListener("pointermove", onMove); cv.addEventListener("pointerleave", onLeave);
+
+    sceneRef.current = { camera, controls, wallets, band, bandEdges, bandEdgeMat, anchor, ping, selectedId: null, bandLabelAt: null };
+
+    return () => {
+      cancelAnimationFrame(raf); ro.disconnect(); controls.dispose();
+      cv.removeEventListener("pointerdown", onDown); cv.removeEventListener("pointerup", onUp);
+      cv.removeEventListener("pointermove", onMove); cv.removeEventListener("pointerleave", onLeave);
+      scene.traverse((o) => { o.geometry?.dispose?.(); const m = o.material; (Array.isArray(m) ? m : m ? [m] : []).forEach((x) => x.dispose()); });
+      composer.dispose?.(); renderer.dispose(); cv.remove();
+      sceneRef.current = null;
+    };
+  }, [plotted, byCountry, rm]);
+
+  // --- camera moves: one tween drives direction + distance together ----------------------
+  const anim = useRef(null);
+  const flyTo = (dir, dist) => {
+    const s = sceneRef.current; if (!s) return;
     anim.current?.stop();
-    const from = { ...viewRef.current };
-    // Always tween (duration 0 under reduced motion) so the state update happens in the
-    // animation callback rather than synchronously inside an effect body.
+    const fromDir = s.camera.position.clone().normalize(), fromDist = s.camera.position.length();
+    const q = new THREE.Quaternion().setFromUnitVectors(fromDir, dir.clone().normalize());
+    const q0 = new THREE.Quaternion();
     anim.current = animate(0, 1, {
-      duration: rm ? 0 : 0.25, ease: [0.4, 0, 0.2, 1],
-      onUpdate: (t) => setView({ k: from.k + (target.k - from.k) * t, tx: from.tx + (target.tx - from.tx) * t, ty: from.ty + (target.ty - from.ty) * t }),
+      duration: rm ? 0 : 0.9, ease: [0.2, 0, 0, 1],
+      onUpdate: (u) => {
+        const d = fromDir.clone().applyQuaternion(q0.clone().slerp(q, u));
+        s.camera.position.copy(d.multiplyScalar(fromDist + (dist - fromDist) * u));
+      },
     });
   };
-  useEffect(() => {
-    if (!selected) return;
-    // frame both the claimed point and the activity band, if present
-    const pts = [[selected.x, selected.y], ...(selected.bandXY ? [selected.bandXY] : [])];
-    const minX = Math.min(...pts.map((p) => p[0])), maxX = Math.max(...pts.map((p) => p[0]));
-    const minY = Math.min(...pts.map((p) => p[1])), maxY = Math.max(...pts.map((p) => p[1]));
-    const spanX = Math.max(maxX - minX, 60), spanY = Math.max(maxY - minY, 30);
-    const k = Math.max(K_MIN, Math.min(K_MAX, Math.min((W * 0.55) / spanX, (H * 0.55) / spanY)));
-    const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
-    goTo({ k, tx: W / 2 - cx * k, ty: H / 2 - cy * k });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedId]);
+  useEffect(() => () => anim.current?.stop(), []);
 
-  // --- wheel zoom about the cursor, drag pan, dblclick reset -----------------------
-  const svgPoint = (e) => {
-    const r = svgRef.current.getBoundingClientRect();
-    return [((e.clientX - r.left) / r.width) * W, ((e.clientY - r.top) / r.height) * H];
-  };
-  const onWheel = (e) => {
-    e.preventDefault(); anim.current?.stop();
-    const [px, py] = svgPoint(e);
-    const f = Math.exp(-e.deltaY * 0.0012);
-    // functional update: correct even when several wheel events land before a commit
-    setView((v) => { const k = Math.max(K_MIN, Math.min(K_MAX, v.k * f)); const s = k / v.k; return { k, tx: px - (px - v.tx) * s, ty: py - (py - v.ty) * s }; });
-  };
-  const onDown = (e) => { anim.current?.stop(); drag.current = { x: e.clientX, y: e.clientY, tx: viewRef.current.tx, ty: viewRef.current.ty, moved: false }; setDragging(true); };
-  const onMove = (e) => {
-    if (!drag.current) return;
-    const r = svgRef.current.getBoundingClientRect();
-    const dx = ((e.clientX - drag.current.x) / r.width) * W, dy = ((e.clientY - drag.current.y) / r.height) * H;
-    if (Math.abs(dx) + Math.abs(dy) > 2) drag.current.moved = true;
-    setView((v) => ({ ...v, tx: drag.current.tx + dx, ty: drag.current.ty + dy }));
-  };
-  const onUp = () => { drag.current = null; setDragging(false); };
-  const reset = () => { onSelect?.(null); goTo({ k: 1, tx: 0, ty: 0 }); };
-  const zoomBy = (s) => { const v = viewRef.current; const k = Math.max(K_MIN, Math.min(K_MAX, v.k * s)); const r = k / v.k; goTo({ k, tx: W / 2 - (W / 2 - v.tx) * r, ty: H / 2 - (H / 2 - v.ty) * r }); };
-  // non-passive listener so preventDefault can stop the page from scrolling under the map
+  // --- selection: highlight, band, ping, and frame both ends ---------------------------
   useEffect(() => {
-    const el = svgRef.current;
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
+    const s = sceneRef.current; if (!s) return;
+    s.selectedId = selectedId ?? null;
+    for (const [id, w] of s.wallets) {
+      const on = id === selectedId, dim = selectedId && !on;
+      // three.js materials are imperative scene objects, not React state
+      // eslint-disable-next-line react-hooks/immutability
+      w.spikeMat.opacity = dim ? 0.2 : 0.85;
+      w.headMat.opacity = dim ? 0.25 : 1;
+      w.head.scale.setScalar(on ? 0.09 : 0.05);
+      w.headMat.color.set(on ? 0xffffff : ION);
+      if (w.arc) { w.arc.lineMat.opacity = on ? 1 : dim ? 0.06 : 0.45; w.arc.pulseMat.opacity = dim ? 0.1 : 1; }
+    }
+    const w = selectedId ? s.wallets.get(selectedId) : null;
+    const b = w?.p.band;
+    s.band.visible = s.bandEdges.visible = s.anchor.visible = !!b;
+    s.ping.visible = !!w;
+    s.bandLabelAt = null;
+    s.bandEdges.children.forEach((c) => c.geometry.dispose());
+    s.bandEdges.clear();
+    if (b) {
+      // the shaded object is the timezone band itself — the longitudes sharing that offset
+      const [lon0, lon1] = bandLonRange(b.offset);
+      s.band.geometry.dispose();
+      s.band.geometry = new THREE.SphereGeometry(R * 1.004, 24, 48, (lon0 + 180) * DEG, (lon1 - lon0) * DEG);
+      for (const lon of [lon0, lon1]) {
+        s.bandEdges.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(Array.from({ length: 61 }, (_, i) => toVec(-90 + i * 3, lon, R * 1.005))), s.bandEdgeMat));
+      }
+      const a = toVec(b.lat, b.lon, R * 1.003);
+      s.anchor.position.copy(a); s.anchor.lookAt(a.clone().multiplyScalar(2));
+      s.bandLabelAt = toVec(Math.min(70, b.lat + 22), b.offset * 15, R * 1.02);
+    }
+    if (w) {
+      s.ping.position.copy(toVec(w.p.lat, w.p.lon, R * 1.003)); s.ping.lookAt(s.ping.position.clone().multiplyScalar(2));
+      s.controls.autoRotate = false;
+      const end = b ? toVec(b.lat, b.lon) : w.base;
+      flyTo(w.base.clone().add(end), Math.max(DIST_MIN + 0.5, Math.min(DIST_HOME, 2.4 + w.base.angleTo(end) * 1.1)));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [selectedId, plotted]);
 
-  const { k, tx, ty } = view;
-  const inv = 1 / k;
+  const reset = () => {
+    onSelect?.(null);
+    const s = sceneRef.current; if (!s) return;
+    flyTo(s.camera.position, DIST_HOME);
+    if (!rm) setTimeout(() => { if (sceneRef.current) sceneRef.current.controls.autoRotate = true; }, 1000);
+  };
+  const zoomBy = (f) => {
+    const s = sceneRef.current; if (!s) return;
+    flyTo(s.camera.position, Math.max(DIST_MIN, Math.min(DIST_MAX, s.camera.position.length() / f)));
+  };
+
+  const hovered = hover && plotted.find((p) => p.nodeId === hover.id);
   const band = selected?.band ?? null;
-  const bandX = band ? bandLonRange(band.offset).map((lon) => ((lon + 180) / 360) * W) : null;
 
   return (
-    <div style={{ position: "relative", width: "100%", background: "#fff", overflow: "hidden" }}>
-      <svg ref={svgRef} viewBox={`0 0 ${W} ${H}`} role="img" aria-label="World map of wallets by claimed country"
-           style={{ width: "100%", height: "auto", display: "block", cursor: dragging ? "grabbing" : "grab", userSelect: "none" }}
-           onMouseDown={onDown} onMouseMove={onMove} onMouseUp={onUp} onMouseLeave={onUp} onDoubleClick={reset}>
-        <rect width={W} height={H} fill="#fff" />
-        <g transform={`translate(${tx},${ty}) scale(${k})`}>
-          {/* graticule */}
-          {Array.from({ length: 11 }, (_, i) => (i + 1) * 30 - 180).map((lon) => (
-            <line key={`m${lon}`} x1={((lon + 180) / 360) * W} x2={((lon + 180) / 360) * W} y1={0} y2={H} stroke={C.HAIR} strokeWidth={inv} />
-          ))}
-          {[-60, -30, 0, 30, 60].map((lat) => (
-            <line key={`p${lat}`} x1={0} x2={W} y1={((90 - lat) / 180) * H} y2={((90 - lat) / 180) * H} stroke={C.HAIR} strokeWidth={inv} />
-          ))}
-          {/* the timezone band the detector says the activity fits */}
-          {bandX && (
-            <g>
-              <rect x={bandX[0]} y={0} width={bandX[1] - bandX[0]} height={H} fill={C.LILAC} fillOpacity={0.55} />
-              <text x={(bandX[0] + bandX[1]) / 2} y={18 * inv} textAnchor="middle" fill={C.VIOLET_DEEP} fontSize={11 * inv} fontFamily={FONT} fontWeight="500">
-                UTC{band.offset >= 0 ? "+" : ""}{band.offset} · {band.name}
-              </text>
-            </g>
-          )}
-          <path d={landPath} fill={C.LINEN} stroke={C.LINE} strokeWidth={0.7 * inv} />
+    <div ref={wrapRef} className="viewport" style={{ height: 540 }} onDoubleClick={reset}
+      role="img" aria-label={`Globe of ${plotted.length} flagged wallets by claimed country`}>
+      <div className="hudc" aria-hidden="true"><i /><i /><i /><i /></div>
+      <div className="readout" aria-hidden="true">
+        <div><span className="rec" />Claimed vs. active</div>
+        <div>Wallets <b>{plotted.length}</b> · countries <b>{byCountry.length}</b></div>
+        {selected && <div>Target <b>{selected.claimedCountry}</b>{band ? <> → <b style={{ color: "var(--ember)" }}>{band.name}</b></> : null}</div>}
+      </div>
 
-          {/* arcs: claimed country -> activity band */}
-          {plotted.map((p) => p.bandXY && (
-            <path key={`a${p.nodeId}`} d={arcPath([p.x, p.y], p.bandXY)} fill="none"
-                  stroke={C.VIOLET} strokeWidth={(selected?.nodeId === p.nodeId ? 1.6 : 0.7) * inv}
-                  strokeOpacity={selected ? (selected.nodeId === p.nodeId ? 0.95 : 0.1) : 0.35}
-                  strokeDasharray={`${3 * inv} ${3 * inv}`} />
-          ))}
-          {selected?.bandXY && (
-            <g>
-              <circle cx={selected.bandXY[0]} cy={selected.bandXY[1]} r={4 * inv} fill="none" stroke={C.VIOLET} strokeWidth={1.2 * inv} />
-              <circle cx={selected.bandXY[0]} cy={selected.bandXY[1]} r={1.6 * inv} fill={C.VIOLET} />
-            </g>
-          )}
+      {byCountry.map((c) => (
+        <span key={c.code} className="glabel" style={{ opacity: 0 }}
+          data-dim={selected && selected.claimedCountry !== c.code ? "1" : "0"}
+          ref={(n) => { if (n) labelRefs.current.set(c.code, n); else labelRefs.current.delete(c.code); }}>
+          {c.code}<em>×{c.n}</em>
+        </span>
+      ))}
+      <span className="glabel band" style={{ opacity: 0 }} data-dim="0"
+        ref={(n) => { if (n) labelRefs.current.set("__band", n); else labelRefs.current.delete("__band"); }}>
+        {band ? `UTC${band.offset >= 0 ? "+" : ""}${band.offset} · ${band.name}` : ""}
+      </span>
 
-          {/* per-country labels */}
-          {byCountry.map((c) => (
-            <text key={c.code} x={c.x + 11 * inv} y={c.y - 9 * inv} fill={C.INK} fontSize={11 * inv} fontFamily={FONT} fontWeight="500"
-                  opacity={selected && selected.claimedCountry !== c.code ? 0.3 : 0.9} style={{ pointerEvents: "none" }}>
-              {c.code}<tspan fill={C.ASH} fontWeight="400"> ×{c.n}</tspan>
-            </text>
-          ))}
+      {hovered && (
+        <div className="gtip" style={{ left: Math.max(8, Math.min(hover.x + 14, hover.w - 330)), top: hover.y + 14 }}>
+          <b>{hovered.nodeId}</b>
+          claims {hovered.claimedCountry} ({hovered.countryName})
+          {hovered.reason && <div style={{ marginTop: 4 }}>{hovered.reason}</div>}
+        </div>
+      )}
 
-          {/* wallets */}
-          {plotted.map((p) => {
-            const on = selected?.nodeId === p.nodeId;
-            const dim = selected && !on;
-            return (
-              <g key={p.nodeId} opacity={dim ? 0.28 : 1} style={{ cursor: "pointer" }}
-                 onClick={(e) => { e.stopPropagation(); if (!drag.current?.moved) onSelect?.(on ? null : p.nodeId); }}>
-                {on && !rm && (
-                  <circle key={`pulse-${selectedId}`} cx={p.x} cy={p.y} r={5 * inv} fill="none" stroke={C.VIOLET} strokeWidth={1.2 * inv}>
-                    <animate attributeName="r" from={5 * inv} to={16 * inv} dur="0.7s" fill="freeze" />
-                    <animate attributeName="opacity" from="0.7" to="0" dur="0.7s" fill="freeze" />
-                  </circle>
-                )}
-                <circle cx={p.x} cy={p.y} r={(on ? 6 : 4.5) * inv} fill={on ? C.VIOLET_DEEP : C.VIOLET} stroke="#fff" strokeWidth={1.2 * inv} />
-                <title>{`${p.nodeId}\nclaims ${p.claimedCountry} (${p.countryName})\n${p.reason ?? ""}`}</title>
-              </g>
-            );
-          })}
-        </g>
-      </svg>
-
-      <div style={{ position: "absolute", top: 12, right: 12, display: "flex", gap: 6 }}>
-        <button className="btn sm" onClick={() => zoomBy(1.5)} aria-label="Zoom in">+</button>
-        <button className="btn sm" onClick={() => zoomBy(1 / 1.5)} aria-label="Zoom out">−</button>
+      <div className="ctrls">
+        <button className="btn sm" onClick={() => zoomBy(1.4)} aria-label="Zoom in">+</button>
+        <button className="btn sm" onClick={() => zoomBy(1 / 1.4)} aria-label="Zoom out">−</button>
         <button className="btn sm" onClick={reset}>Reset</button>
+      </div>
+      <div className="legend">
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><i style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--ion)", boxShadow: "0 0 8px var(--ion)" }} />Claimed country</span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><i style={{ width: 22, height: 2, borderRadius: 2, background: "linear-gradient(90deg, var(--ion), var(--ember))" }} />Arc to where activity fits</span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><i style={{ width: 12, height: 10, borderRadius: 2, background: "var(--ember-tint)", boxShadow: "0 0 0 1px var(--ember) inset" }} />Timezone band (selected)</span>
+        <span className="hint">Drag to spin · scroll to zoom · click a wallet · double-click to reset</span>
       </div>
     </div>
   );

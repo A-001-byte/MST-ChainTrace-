@@ -30,7 +30,7 @@ export function Bars({ data, name = "count", color = C.VIOLET, colorBy, height =
         <XAxis dataKey="k" {...axis} interval="preserveStartEnd" />
         <YAxis {...axis} allowDecimals={false} width={44} />
         <Tooltip content={<Tip fmt={fmt} />} cursor={{ fill: C.LINEN }} />
-        <Bar dataKey="n" name={name} radius={[4, 4, 0, 0]} maxBarSize={56}>
+        <Bar dataKey="n" name={name} radius={[3, 3, 0, 0]} maxBarSize={56} fillOpacity={0.88}>
           {data.map((d, i) => <Cell key={i} fill={colorBy ? colorBy(d) : color} />)}
         </Bar>
       </BarChart>
@@ -42,10 +42,10 @@ export function Bars({ data, name = "count", color = C.VIOLET, colorBy, height =
 export function Curve({ data, xKey = "threshold", yKey, name, color = C.VIOLET, height = 220 }) {
   return (
     <div className="chart"><ResponsiveContainer width="100%" height={height}>
-      <AreaChart data={data} margin={{ top: 4, right: 8, left: -14, bottom: 0 }}>
+      <AreaChart data={data} margin={{ top: 4, right: 8, left: -4, bottom: 0 }}>
         <defs>
           <linearGradient id={`fill-${yKey}`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={color} stopOpacity={0.16} /><stop offset="100%" stopColor={color} stopOpacity={0} />
+            <stop offset="0%" stopColor={color} stopOpacity={0.34} /><stop offset="100%" stopColor={color} stopOpacity={0} />
           </linearGradient>
         </defs>
         <CartesianGrid {...grid} />
@@ -62,7 +62,7 @@ export function Curve({ data, xKey = "threshold", yKey, name, color = C.VIOLET, 
 export function Lines({ data, xKey = "threshold", series, height = 220 }) {
   return (
     <div className="chart"><ResponsiveContainer width="100%" height={height}>
-      <LineChart data={data} margin={{ top: 4, right: 8, left: -14, bottom: 0 }}>
+      <LineChart data={data} margin={{ top: 4, right: 8, left: -4, bottom: 0 }}>
         <CartesianGrid {...grid} />
         <XAxis dataKey={xKey} {...axis} tickFormatter={(v) => v.toFixed(2)} />
         <YAxis domain={[0, "auto"]} {...axis} width={44} tickFormatter={(v) => `${Math.round(v * 100)}%`} />

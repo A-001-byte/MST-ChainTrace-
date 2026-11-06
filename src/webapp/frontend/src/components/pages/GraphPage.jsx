@@ -1,6 +1,7 @@
 import { lazy, Suspense, useMemo } from "react";
 import { useGraphData } from "../../hooks/useGraphData";
 import { CHART_COLORS as C } from "../../lib/chartColors";
+import { CLUSTER_PALETTE } from "../../lib/clusterColors";
 import { num } from "../../lib/format";
 import { Card, Stat, Stats, PageHead, Empty, ErrorCard, Reveal } from "../ui";
 
@@ -10,8 +11,20 @@ const ForensicGraph3D = lazy(() => import("../graph/ForensicGraph3D"));
 function Key({ c, ring, children }) {
   return (
     <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-      <i style={{ width: 10, height: 10, borderRadius: "50%", background: ring ? "transparent" : c, border: ring ? `2px solid ${ring}` : "none", flex: "none" }} />
+      <i style={{ width: 10, height: 10, borderRadius: "50%", background: ring ? "transparent" : c, border: ring ? `2px solid ${ring}` : "none", boxShadow: `0 0 8px ${ring ?? c}`, flex: "none" }} />
       {children}
+    </span>
+  );
+}
+
+/** Cluster colour is nominal, so the key shows the ramp rather than one swatch. */
+function Ramp() {
+  return (
+    <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+      <span style={{ display: "inline-flex", gap: 3 }}>
+        {CLUSTER_PALETTE.slice(0, 5).map((c) => <i key={c} style={{ width: 8, height: 8, borderRadius: "50%", background: c, boxShadow: `0 0 6px ${c}` }} />)}
+      </span>
+      Colour is the cluster
     </span>
   );
 }
@@ -48,15 +61,24 @@ export default function GraphPage({ focus, onOpen }) {
 
       <Reveal delay={0.08}>
         <Card flush>
-          <Suspense fallback={<div className="empty" style={{ padding: 24, height: "62vh" }}>Loading renderer…</div>}>
-            <ForensicGraph3D data={data} focusNodeId={focus} onSelectNode={onOpen} height="62vh" />
-          </Suspense>
-          <div className="meta" style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: "16px 24px", borderTop: "1px solid var(--hair)", alignItems: "center" }}>
-            <Key c={C.VIOLET}>Colour is the cluster</Key>
-            <Key c={C.SLATE}>Size is the risk score</Key>
-            <Key ring={C.DOWN}>Geo-temporal mismatch</Key>
-            <Key c={C.LINE}>Unscored context</Key>
-            <span style={{ marginLeft: "auto" }}>Drag to rotate · scroll to zoom · click a node for its record</span>
+          <div className="viewport">
+            <Suspense fallback={<div className="empty" style={{ padding: 24, height: "72vh" }}>Loading renderer…</div>}>
+              <ForensicGraph3D data={data} focusNodeId={focus} onSelectNode={onOpen} height="72vh" />
+            </Suspense>
+            <div className="hudc" aria-hidden="true"><i /><i /><i /><i /></div>
+            <div className="scan" aria-hidden="true" />
+            <div className="readout" aria-hidden="true">
+              <div><span className="rec" />Live render</div>
+              <div>Nodes <b>{num(data.nodes.length)}</b> · edges <b>{num(data.edges.length)}</b></div>
+              {focus && <div>Target <b>{focus.length > 22 ? `${focus.slice(0, 22)}…` : focus}</b></div>}
+            </div>
+            <div className="legend">
+              <Ramp />
+              <Key c={C.VIOLET}>Size is the risk score</Key>
+              <Key ring={C.DOWN}>Geo-temporal mismatch</Key>
+              <Key c="#3a4a68">Unscored context</Key>
+              <span className="hint">Drag to orbit · scroll to zoom · hover to trace flow · click for the record</span>
+            </div>
           </div>
         </Card>
       </Reveal>

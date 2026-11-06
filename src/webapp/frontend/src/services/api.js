@@ -1,6 +1,12 @@
 ﻿async function fetchJson(url) {
   const res = await fetch(url);
   const body = await res.json().catch(() => null);
+  // Session expired or signed out elsewhere: reload into the sign-in screen rather than
+  // leaving every panel showing an error.
+  if (res.status === 401) {
+    window.location.reload();
+    throw new Error("Sign in required.");
+  }
   if (!res.ok) {
     const message = body?.error || `Request to ${url} failed (${res.status})`;
     throw new Error(message);
@@ -46,4 +52,14 @@ export function getAplSummary() {
 
 export function getAplAgency(nodeId) {
   return fetchJson(`/api/apl/agency/${encodeURIComponent(nodeId)}`);
+}
+
+// --- on-chain verdict layer -------------------------------------------------
+
+export function getVerdict(address) {
+  return fetchJson(`/api/verdict/${encodeURIComponent(address)}`);
+}
+
+export function getGatewayPreview() {
+  return fetchJson("/api/verdict/gateway-preview");
 }
