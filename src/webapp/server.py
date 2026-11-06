@@ -29,6 +29,7 @@ or via the Flask CLI:
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 
@@ -427,6 +428,20 @@ def _build_graph_payload(alerts_df: pd.DataFrame, tx_df: pd.DataFrame) -> dict:
     }
 
 
+_graph_payload_cache: dict = {}
+
+
+def _cached_graph_payload(alerts_df: pd.DataFrame, tx_df: pd.DataFrame) -> dict:
+    """_build_graph_payload() walks every alert's linked transactions (~6s on the full
+    dataset), so it is cached on the same key as the datasets: a fresh pipeline run
+    (new mtime) rebuilds it, a repeat page load does not."""
+    cache_key = _current_cache_key()
+    if cache_key not in _graph_payload_cache:
+        _graph_payload_cache.clear()
+        _graph_payload_cache[cache_key] = _build_graph_payload(alerts_df, tx_df)
+    return _graph_payload_cache[cache_key]
+
+
 def _lookup_entity_beyond_alerts(node_id: str, tx_df: pd.DataFrame) -> dict | None:
     """Best-effort record for an entity that is NOT in the top-N ranked alerts.
 
@@ -583,7 +598,7 @@ def create_app() -> Flask:
         report clicks back to React -- see _build_graph_payload().
         """
         tx_df, alerts_df, _, _ = _active_datasets()
-        return jsonify(_build_graph_payload(alerts_df, tx_df))
+        return jsonify(_cached_graph_payload(alerts_df, tx_df))
 
     @app.get("/api/apl/summary")
     def api_apl_summary():
@@ -826,8 +841,17 @@ def create_app() -> Flask:
         rows = json.loads(page.to_json(orient="records"))  # see api_alerts() for why to_json(), not jsonify(to_dict())
         return jsonify({"total": len(tx_df), "limit": limit, "offset": offset, "rows": rows})
 
+    # On-chain verdict layer. Registered from its own module so it can be swapped out
+    # without touching the routes above.
+    from src.webapp import auth, chain_routes
+
+    chain_routes.register(app)
+    # Investigator sign-in: every /api/* route except /api/auth/* needs a session.
+    auth.register(app)
+
     return app
 
 
 if __name__ == "__main__":
-    create_app().run(host="127.0.0.1", port=5000, debug=False)
+    # PORT lets the console run beside other local apps that already hold 5000.
+    create_app().run(host="127.0.0.1", port=int(os.environ.get("PORT", "5000")), debug=False)

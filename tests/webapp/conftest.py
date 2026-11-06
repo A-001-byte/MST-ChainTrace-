@@ -96,8 +96,25 @@ def app(monkeypatch, alerts_csv, unified_dataset_csv):
     return flask_app
 
 
+INVESTIGATOR = {"id": "NTRO-CYB-0000", "name": "Test Analyst", "unit": "Test", "clearance": "L1"}
+
+
+def signed_in(flask_app):
+    """A test client that already holds an investigator session, so endpoint tests run
+    behind the real /api guard instead of switching it off."""
+    c = flask_app.test_client()
+    with c.session_transaction() as s:
+        s["investigator"] = INVESTIGATOR
+    return c
+
+
 @pytest.fixture
 def client(app):
+    return signed_in(app)
+
+
+@pytest.fixture
+def anon_client(app):
     return app.test_client()
 
 
@@ -113,4 +130,4 @@ def app_missing_files(monkeypatch, tmp_path):
 
 @pytest.fixture
 def client_missing_files(app_missing_files):
-    return app_missing_files.test_client()
+    return signed_in(app_missing_files)

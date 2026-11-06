@@ -1,0 +1,26 @@
+[
+  {
+    "id": "NTRO-CYB-4471",
+    "name": "Lead Analyst",
+    "unit": "Cyber Forensics Cell",
+    "clearance": "L3",
+    "salt": "0x2d45b7a0870c4beac4ab348bd4abb4cd",
+    "hash": "0x7bf9caca627a821cc57a78c0f3e9a1ab26aad12b7c6c6f632bd4de77b8e0695b"
+  },
+  {
+    "id": "NTRO-CYB-2093",
+    "name": "Field Investigator",
+    "unit": "Financial Intelligence Desk",
+    "clearance": "L2",
+    "salt": "0x2b763ad90741679b2650bfc29c646041",
+    "hash": "0xeddc325497c5b440c1ccdb7145bb2a7bcace1613e10aaeb7596e0066dc640d7a"
+  },
+  {
+    "id": "NTRO-CYB-0007",
+    "name": "Duty Officer",
+    "unit": "Threat Operations Centre",
+    "clearance": "L4",
+    "salt": "0x659cba5cd6a17236d7b2f83cee0e9fea",
+    "hash": "0xf44fb6ce750efe1e84c4c394b8f08d691b5e8173fa583e3e2a042a533f9960de"
+  }
+]
